@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-25T01:23:48.132Z</updated>
+  <updated>2019-10-25T02:24:40.705Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>master</title>
+    <link href="http://yoursite.com/2019/10/25/master/"/>
+    <id>http://yoursite.com/2019/10/25/master/</id>
+    <published>2019-10-25T02:22:31.000Z</published>
+    <updated>2019-10-25T02:24:40.705Z</updated>
+    
+    <content type="html"><![CDATA[<p>To <a href="https://github.com/Koreyoshi-q/Koreyoshi-q.github.io.git" target="_blank" rel="noopener">https://github.com/Koreyoshi-q/Koreyoshi-q.github.io.git</a><br>   2b4428f..527d3e6  HEAD -&gt; master<br>Branch ‘master’ set up to track remote branch ‘master’ from ‘<a href="https://github.com/Koreyoshi-q/Koreyoshi-q.github.io.git&#39;" target="_blank" rel="noopener">https://github.com/Koreyoshi-q/Koreyoshi-q.github.io.git&#39;</a>.<br>On branch master<br>nothing to commit, working tree clean<br>Enumerating objects: 7, done.<br>Counting objects: 100% (7/7), done.<br>Delta compression using up to 4 threads<br>Compressing objects: 100% (3/3), done.<br>Writing objects: 100% (4/4), 357 bytes | 357.00 KiB/s, done.<br>Total 4 (delta 2), reused 0 (delta 0)<br>To <a href="https://git.dev.tencent.com/qf_52hertz/qf_52hertz.git" target="_blank" rel="noopener">https://git.dev.tencent.com/qf_52hertz/qf_52hertz.git</a><br>   2b4428f..527d3e6  HEAD -&gt; master<br>Branch ‘master’ set up to track remote branch ‘master’ from ‘<a href="https://git.dev.tencent.com/qf_52hertz/qf_52hertz.git&#39;" target="_blank" rel="noopener">https://git.dev.tencent.com/qf_52hertz/qf_52hertz.git&#39;</a>.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;To &lt;a href=&quot;https://github.com/Koreyoshi-q/Koreyoshi-q.github.io.git&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/Koreyoshi-q/Korey
+      
+    
+    </summary>
+    
+    
+      <category term="Test" scheme="http://yoursite.com/categories/Test/"/>
+    
+    
+      <category term="Testing" scheme="http://yoursite.com/tags/Testing/"/>
+    
+  </entry>
   
   <entry>
     <title>cotest</title>
