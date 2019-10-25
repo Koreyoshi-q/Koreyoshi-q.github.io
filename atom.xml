@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-24T08:47:16.495Z</updated>
+  <updated>2019-10-25T01:23:48.132Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cotest</title>
+    <link href="http://yoursite.com/2019/10/25/cotest/"/>
+    <id>http://yoursite.com/2019/10/25/cotest/</id>
+    <published>2019-10-25T01:22:41.000Z</published>
+    <updated>2019-10-25T01:23:48.132Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>git remote add origin <a href="https://github.com/XXX(username)/YYYY(projectname).git" target="_blank" rel="noopener">https://github.com/XXX(username)/YYYY(projectname).git</a></strong></p><p>　　加上一个remote的地址，名叫origin，地址是github上的地址（Create a new repo就会有）<br>　　因为Git是分布式的，所以可以有多个remote.</p><p>　　<strong>git push -u origin master</strong><br>　　将本地内容push到github上的那个地址上去。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;git remote add origin &lt;a href=&quot;https://github.com/XXX(username)/YYYY(projectname).git&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Testing" scheme="http://yoursite.com/tags/Testing/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
