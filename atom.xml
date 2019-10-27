@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-27T03:39:46.751Z</updated>
+  <updated>2019-10-27T10:46:42.923Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HDU 1873 优先队列</title>
+    <link href="http://yoursite.com/2019/10/27/HDU-1873-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/"/>
+    <id>http://yoursite.com/2019/10/27/HDU-1873-优先队列/</id>
+    <published>2019-10-27T10:40:54.000Z</published>
+    <updated>2019-10-27T10:46:42.923Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><em>\</em>D题(优先队列)**</strong></p><p>题目链接:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1873" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=1873</a></p><p>作为一个阴险的出题人，当然不能出裸的优先队列啦，不能变成打字比赛啊(雾)</p><p>所以这道题的优先队列有两个优先级，一个是看病的优先级，还有一个就是时间的优先级，所以显而易见需要重载运算符了，注意点就是优先队列重载运算符刚好是反一下的，大于就是小于，小于就是大于，如果你熟练掌握了优先队列的话这题过的比上一题快多了</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">​</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">​</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">   <span class="keyword">int</span> x,y;</span><br><span class="line">   <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (node a,node b)&#123;</span><br><span class="line">       <span class="keyword">return</span> a.x==b.x?a.y&gt;b.y:a.x&lt;b.x;</span><br><span class="line">  &#125;</span><br><span class="line">   node(<span class="keyword">int</span> x,<span class="keyword">int</span> y)&#123;</span><br><span class="line">       <span class="keyword">this</span>-&gt;x=x;</span><br><span class="line">       <span class="keyword">this</span>-&gt;y=y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">​</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">       <span class="built_in">string</span> s;<span class="keyword">int</span> a,b,c=<span class="number">0</span>;</span><br><span class="line">       priority_queue&lt;node&gt; que[<span class="number">3</span>];</span><br><span class="line">       <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">           <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">           <span class="keyword">if</span> (s == <span class="string">"IN"</span>) &#123;</span><br><span class="line">               c++;</span><br><span class="line">               <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">               que[a - <span class="number">1</span>].push(node(b, c));</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">               <span class="keyword">if</span> (!que[a - <span class="number">1</span>].empty()) &#123;</span><br><span class="line">                   node p = que[a - <span class="number">1</span>].top();</span><br><span class="line">                   que[a - <span class="number">1</span>].pop();</span><br><span class="line">                   <span class="built_in">cout</span> &lt;&lt; p.y &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">              &#125; <span class="keyword">else</span></span><br><span class="line">                   <span class="built_in">cout</span> &lt;&lt; <span class="string">"EMPTY"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;&lt;em&gt;\&lt;/em&gt;D题(优先队列)**&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;题目链接:&lt;a href=&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1873&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="HDU" scheme="http://yoursite.com/categories/HDU/"/>
+    
+    
+      <category term="优先队列" scheme="http://yoursite.com/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>type</title>
