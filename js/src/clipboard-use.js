@@ -1,10 +1,10 @@
-/*ҳ��������ɺ󣬴������ư�ť*/
+/*Ò³ÃæÔØÈëÍê³Éºó£¬´´½¨¸´ÖÆ°´Å¥*/
 !function (e, t, a) { 
   /* code */
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <i class="fa fa-globe"></i><span>copy</span>';
+    copyHtml += '  <i class="fa fa-globe"></i><span>复制</span>';
     copyHtml += '</button>';
     $(".highlight .code pre").before(copyHtml);
     new ClipboardJS('.btn-copy', {
