@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hexo," />
 
 
 
@@ -104,14 +104,15 @@
 
 
 
-<meta name="description" content="52hertz123456#include&amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    cout&amp;lt;&amp;lt;&quot;hello world !&quot;&amp;lt;&amp;lt;endl;    return 0;&amp;#125;">
+<meta name="description" content="需求很简单首先我的远程仓库没有其他分支，只有主分支只想在本地修改一份代码后，可以通过终端一键推送到两个远程仓库。 网上的教程是这样的修改.git&#x2F;config配置文件 1234567891011121314[core]    repositoryformatversion = 0    filemode = true    bare = false    logallrefupdates = tr">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;22&#x2F;test&#x2F;index.html">
+<meta property="og:title" content="git一个项目设置多个远程仓库">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;git%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93&#x2F;index.html">
 <meta property="og:site_name" content="52hertz">
-<meta property="og:description" content="52hertz123456#include&amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    cout&amp;lt;&amp;lt;&quot;hello world !&quot;&amp;lt;&amp;lt;endl;    return 0;&amp;#125;">
+<meta property="og:description" content="需求很简单首先我的远程仓库没有其他分支，只有主分支只想在本地修改一份代码后，可以通过终端一键推送到两个远程仓库。 网上的教程是这样的修改.git&#x2F;config配置文件 1234567891011121314[core]    repositoryformatversion = 0    filemode = true    bare = false    logallrefupdates = tr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T09:34:07.299Z">
+<meta property="og:updated_time" content="2019-11-07T06:59:04.552Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -130,7 +131,7 @@
   };
 </script>
 
-  <title> test | 52hertz </title>
+  <title> git一个项目设置多个远程仓库 | 52hertz </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +261,7 @@
             
             
               
-                test
+                git一个项目设置多个远程仓库
               
             
           </h1>
@@ -272,11 +273,30 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-10-22T17:32:13+08:00" content="2019-10-22">
-              2019-10-22
+            <time itemprop="dateCreated" datetime="2019-11-07T14:37:37+08:00" content="2019-11-07">
+              2019-11-07
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -300,8 +320,30 @@
       
 
       
-        <h3 id="52hertz"><a href="#52hertz" class="headerlink" title="52hertz"></a><strong>52hertz</strong></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world !"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="需求很简单"><a href="#需求很简单" class="headerlink" title="需求很简单"></a>需求很简单</h4><p>首先我的远程仓库没有其他分支，只有主分支<br>只想在本地修改一份代码后，可以通过终端一键推送到两个远程仓库。</p>
+<h4 id="网上的教程是这样的"><a href="#网上的教程是这样的" class="headerlink" title="网上的教程是这样的"></a>网上的教程是这样的</h4><p>修改.git/config配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">    repositoryformatversion = 0</span><br><span class="line">    filemode = true</span><br><span class="line">    bare = false</span><br><span class="line">    logallrefupdates = true</span><br><span class="line">    ignorecase = true</span><br><span class="line">    precomposeunicode = true</span><br><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">    url = git@github.com:okerivy/xxxx.git</span><br><span class="line">    url = git@git.oschina.net:chatcoin/xxxx.git</span><br><span class="line">    fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">[branch &quot;master&quot;]</span><br><span class="line">    remote = origin</span><br><span class="line">    merge = refs/heads/master</span><br></pre></td></tr></table></figure>
 
+<h4 id="出问题"><a href="#出问题" class="headerlink" title="出问题"></a>出问题</h4><p>用了上面的方法，结果推送不上去，一直报错</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  chatcoinCode git:(master) git push  origin --all</span><br><span class="line"></span><br><span class="line">Everything up-to-date</span><br><span class="line">To github.com:okerivy/xxxx.git</span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to <span class="string">'git@github.com:okerivy/xxxx.git'</span></span><br><span class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></span><br><span class="line">hint: not have locally. This <span class="keyword">is</span> usually caused <span class="keyword">by</span> another repository pushing</span><br><span class="line">hint: to the same <span class="keyword">ref</span>. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</span><br><span class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+
+<h4 id="细节问题"><a href="#细节问题" class="headerlink" title="细节问题"></a>细节问题</h4><p>首先我的代码是 oschina 上的。本地有一份代码。<br>开始的.git/config配置文件是这样的</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">    url = git@git.oschina.<span class="symbol">net:</span>chatcoin/xxxx.git</span><br><span class="line">    fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br></pre></td></tr></table></figure>
+
+<p>第一步，需要把本地所有的更改先提交到 oschina 上。</p>
+<p>第二步，在 Github 上创建一个空的项目，什么都不要选。复制 ssh 到 .git/config配置文件，并删除 oschina 的 url</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">    url = git@github.<span class="symbol">com:</span>okerivy/xxxx.git</span><br><span class="line">    fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br></pre></td></tr></table></figure>
+
+<p> 第三步，把本地代码全部<strong>强制</strong>推送到 Github。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure>
+
+<p> 第四部，修改.git/config配置文件，把两个 url 全部添加 </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">    url = git@github.<span class="symbol">com:</span>okerivy/xxxx.git</span><br><span class="line">    url = git@git.oschina.<span class="symbol">net:</span>chatcoin/xxxx.git</span><br><span class="line">    fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br></pre></td></tr></table></figure>
+
+<p> 第五步，修改项目文件，用终端命令 push 测试下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">添加项目</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">填写提交信息</span><br><span class="line">git commit -m “提交信息&quot;</span><br><span class="line"></span><br><span class="line">提交到服务器</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">获取提交的commit信息</span><br><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<p> 两个网站都更新成功 </p>
 
       
     </div>
@@ -321,18 +363,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i>hexo</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/11/07/%E5%A6%82%E4%BD%95%E5%9C%A8Github-Pages%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B5%E9%9D%A2/" rel="next" title="如何在Github-Pages搭建自己的页面">
+                <i class="fa fa-chevron-left"></i> 如何在Github-Pages搭建自己的页面
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/22/%E6%A0%87%E7%AD%BE%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" rel="prev" title="标签测试文章">
-                标签测试文章 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -487,7 +535,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#52hertz"><span class="nav-number">1.</span> <span class="nav-text">52hertz</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求很简单"><span class="nav-number">1.</span> <span class="nav-text">需求很简单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网上的教程是这样的"><span class="nav-number">2.</span> <span class="nav-text">网上的教程是这样的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#出问题"><span class="nav-number">3.</span> <span class="nav-text">出问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#细节问题"><span class="nav-number">4.</span> <span class="nav-text">细节问题</span></a></li></ol></div>
             
           </div>
         </section>
