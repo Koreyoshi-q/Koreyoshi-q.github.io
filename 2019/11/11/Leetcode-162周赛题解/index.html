@@ -1,0 +1,733 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LeetCode," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="52hertz" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="题目链接 https:&#x2F;&#x2F;leetcode-cn.com&#x2F;contest&#x2F;weekly-contest-162  1253. 重构 2 行二进制矩阵给你一个 2 行 n 列的二进制数组：  矩阵是一个二进制矩阵，这意味着矩阵中的每个元素不是 0 就是 1。 第 0 行的元素之和为 upper。 第 1 行的元素之和为 lower。 第 i 列（从 0 开始编号）的元素之和为 colsum[i]，c">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 162周赛题解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3&#x2F;index.html">
+<meta property="og:site_name" content="52hertz">
+<meta property="og:description" content="题目链接 https:&#x2F;&#x2F;leetcode-cn.com&#x2F;contest&#x2F;weekly-contest-162  1253. 重构 2 行二进制矩阵给你一个 2 行 n 列的二进制数组：  矩阵是一个二进制矩阵，这意味着矩阵中的每个元素不是 0 就是 1。 第 0 行的元素之和为 upper。 第 1 行的元素之和为 lower。 第 i 列（从 0 开始编号）的元素之和为 colsum[i]，c">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3&#x2F;7.jpg">
+<meta property="og:updated_time" content="2019-11-11T10:11:55.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3&#x2F;2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Leetcode 162周赛题解 | 52hertz </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+<a href="https://github.com/Koreyoshi-q" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">52hertz</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Leetcode 162周赛题解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-11-11T17:51:08+08:00" content="2019-11-11">
+              2019-11-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p> <a href="https://leetcode-cn.com/contest/weekly-contest-162" target="_blank" rel="noopener">https://leetcode-cn.com/contest/weekly-contest-162</a> </p>
+<h3 id="1253-重构-2-行二进制矩阵"><a href="#1253-重构-2-行二进制矩阵" class="headerlink" title="1253. 重构 2 行二进制矩阵"></a>1253. 重构 2 行二进制矩阵</h3><p>给你一个 <code>2</code> 行 <code>n</code> 列的二进制数组：</p>
+<ul>
+<li>矩阵是一个二进制矩阵，这意味着矩阵中的每个元素不是 <code>0</code> 就是 <code>1</code>。</li>
+<li>第 <code>0</code> 行的元素之和为 <code>upper</code>。</li>
+<li>第 <code>1</code> 行的元素之和为 <code>lower</code>。</li>
+<li>第 <code>i</code> 列（从 <code>0</code> 开始编号）的元素之和为 <code>colsum[i]</code>，<code>colsum</code> 是一个长度为 <code>n</code> 的整数数组。</li>
+</ul>
+<p>你需要利用 <code>upper</code>，<code>lower</code> 和 <code>colsum</code> 来重构这个矩阵，并以二维整数数组的形式返回它。</p>
+<p>如果有多个不同的答案，那么任意一个都可以通过本题。</p>
+<p>如果不存在符合要求的答案，就请返回一个空的二维数组。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：upper = 2, lower = 1, colsum = [1,1,1]</span><br><span class="line">输出：[[1,1,0],[0,0,1]]</span><br><span class="line">解释：[[1,0,1],[0,1,0]] 和 [[0,1,1],[1,0,0]] 也是正确答案。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：upper = 2, lower = 3, colsum = [2,2,1,1]</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：upper = 5, lower = 5, colsum = [2,1,2,0,1,0,1,2,0,1]</span><br><span class="line">输出：[[1,1,1,0,1,0,0,1,0,0],[1,0,1,0,0,0,1,1,0,1]]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= colsum.length &lt;= 10^5</code></li>
+<li><code>0 &lt;= upper, lower &lt;= colsum.length</code></li>
+<li><code>0 &lt;= colsum[i] &lt;= 2</code></li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先题目一开始没看仔细，然后wa了一发，压压惊之后猛然发现矩阵中的元素不是0就是1这个条件，突然醒悟QAQ</p>
+<p>首先判断一下有没有答案，我们来思考一下，矩阵的每行的和与每列的和肯定是相等的，所以说如果colsum和upper+lower都不相等的话那我们就可以直接返回空的vector&gt;了，然后当两个值是相同的时候就一定有答案吗？</p>
+<p>答案是不一定的，这里举个例子</p>
+<p>upper = 1，lower = 3，colsum = [2，2]</p>
+<p>可以发现并没有答案，upper=1这个很致命</p>
+<p>那么我们就发现了更深层次的问题，其实这个题就是upper和lower的分解问题（也就是upper和lower被colsum分解）</p>
+<p>由于只有两行，但是可以有很多列，所以显而易见我们是按列从左到右去填值的（按行你可以试试，试出来算我输）</p>
+<p>所以一共三种分解的情况（因为矩阵是二进制的矩阵）</p>
+<ul>
+<li><strong>colsum==0</strong>，代表矩阵这一列都是0，upper和lower也不会被减</li>
+<li><strong>colsum==2</strong>，很和谐的情况，表示upper和lower都要减一，矩阵两行也都要填1</li>
+<li><strong>colsum==1</strong>，upper和lower其中一个需要减一，那么肯定是两个中取大的那个减一，因为我们要尽可能的找到答案（如果upper或lower被减成负数显然没有答案）</li>
+</ul>
+<p>最后判断一下upper和lower有没有变成负数，变成负数就说明没答案了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; reconstructMatrix(<span class="keyword">int</span> upper, <span class="keyword">int</span> lower, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; colsum) &#123;</span><br><span class="line">        <span class="keyword">int</span> n=colsum.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a(<span class="number">2</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n,<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=colsum[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((upper+lower)!=sum)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(colsum[j]==<span class="number">0</span>)&#123;</span><br><span class="line">                    a[<span class="number">0</span>][j]=a[<span class="number">1</span>][j]=<span class="number">0</span>;                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(colsum[j]==<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upper&gt;=lower)&#123;</span><br><span class="line">                        a[<span class="number">0</span>][j]=<span class="number">1</span>;</span><br><span class="line">                        upper-=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        a[<span class="number">1</span>][j]=<span class="number">1</span>;</span><br><span class="line">                        lower-=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(colsum[j]==<span class="number">2</span>)&#123;</span><br><span class="line">                    a[<span class="number">0</span>][j]=a[<span class="number">1</span>][j]=<span class="number">1</span>;</span><br><span class="line">                    upper-=<span class="number">1</span>;</span><br><span class="line">                    lower-=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">               </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(upper&lt;<span class="number">0</span>||lower&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;();</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>大佬写的直接copy，向大佬致敬！！！！！！！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; reconstructMatrix(<span class="keyword">int</span> upper, <span class="keyword">int</span> lower, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; col) &#123;</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:col) sum+=x;</span><br><span class="line">        <span class="keyword">if</span>(sum!=upper+lower) <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> n=<span class="number">2</span>,m=col.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; v(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(m,<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(col[i]==<span class="number">2</span>)&#123;</span><br><span class="line">                v[<span class="number">0</span>][i]=v[<span class="number">1</span>][i]=<span class="number">1</span>;</span><br><span class="line">                upper--,lower--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(col[i]==<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(upper&gt;=lower) v[<span class="number">0</span>][i]=<span class="number">1</span>,upper--;</span><br><span class="line">                <span class="keyword">else</span> v[<span class="number">1</span>][i]=<span class="number">1</span>,lower--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(upper&lt;<span class="number">0</span>||lower&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;();</span><br><span class="line">        <span class="keyword">return</span> v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5255-奇数值单元格的数目"><a href="#5255-奇数值单元格的数目" class="headerlink" title="5255. 奇数值单元格的数目"></a>5255. 奇数值单元格的数目</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个 <code>n</code> 行 <code>m</code> 列的矩阵，最开始的时候，每个单元格中的值都是 <code>0</code>。</p>
+<p>另有一个索引数组 <code>indices</code>，<code>indices[i] = [ri, ci]</code> 中的 <code>ri</code> 和 <code>ci</code> 分别表示指定的行和列（从 <code>0</code> 开始编号）。</p>
+<p>你需要将每对 <code>[ri, ci]</code> 指定的行和列上的所有单元格的值加 <code>1</code>。</p>
+<p>请你在执行完所有 <code>indices</code> 指定的增量操作后，返回矩阵中 「奇数值单元格」 的数目。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="/2019/11/11/Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3/2.png" alt="2"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2, m = 3, indices = [[0,1],[1,1]]输出：6解释：最开始的矩阵是 [[0,0,0],[0,0,0]]。第一次增量操作后得到 [[1,2,1],[0,1,0]]。最后的矩阵是 [[1,3,1],[1,3,1]]，里面有 6 个奇数。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="/2019/11/11/Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3/1.png" alt="1"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2, m = 2, indices = [[1,1],[0,0]]输出：0解释：最后的矩阵是 [[2,2],[2,2]]，里面没有奇数。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;= n &lt;= 50</li>
+<li>1 &lt;= m &lt;= 50</li>
+<li>1 &lt;= indices.length &lt;= 100</li>
+<li>0 &lt;= indices[i][0] &lt; n</li>
+<li>0 &lt;= indices[i][1] &lt; m</li>
+</ul>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>这题是一个简单的模拟题，我们只需要跟着题目的描述操作就可以</p>
+<p>首先我们创建一个新的二维向量，然后遍历indices这个vector然后对相应地位置+1即可</p>
+<p>最后我们遍历二维向量统计奇数个数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">oddCells</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; indices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a[n][m];</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">        <span class="comment">//cout&lt;&lt;indices.size()&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;indices.size()*<span class="number">2</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> j=indices[i/<span class="number">2</span>][<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>;c&lt;m;c++)&#123;                </span><br><span class="line">                    a[j][c]+=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">int</span> k=indices[i/<span class="number">2</span>][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> r=<span class="number">0</span>;r&lt;n;r++)&#123;</span><br><span class="line">                    a[r][k]+=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)&#123;</span><br><span class="line">                <span class="comment">//cout&lt;&lt;a[i][j]&lt;&lt;"\t";</span></span><br><span class="line">                <span class="keyword">if</span>(a[i][j]%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">                    cnt+=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//cout&lt;&lt;endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>下面是大佬的  值得学习的那必须copy</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">oddCells</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; indices)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; v=<span class="built_in">vector</span>(n+<span class="number">10</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(m+<span class="number">10</span>,<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:indices)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++) v[x[<span class="number">0</span>]][i]++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) v[i][x[<span class="number">1</span>]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">                <span class="keyword">if</span>(v[i][j]&amp;<span class="number">1</span>) ans++;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这次就很努力，没有做完一道题就放弃了，但是超常发挥也只有俩题。看看大佬 不到一小时  AK  </p>
+<p><img src="/2019/11/11/Leetcode-162%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3/7.jpg" alt="7"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i>LeetCode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/08/%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%9B%BD%E5%86%85%E5%A4%96%E8%AE%BF%E9%97%AE%E5%88%86%E6%B5%81/" rel="next" title="绑定域名，国内外访问分流">
+                <i class="fa fa-chevron-left"></i> 绑定域名，国内外访问分流
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="52hertz" />
+          <p class="site-author-name" itemprop="name">52hertz</p>
+          <p class="site-description motion-element" itemprop="description">Koreyoshi</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Koreyoshi-q" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/cqgfq_000" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://crazyeric.top" title="李汉奇" target="_blank">李汉奇</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1253-重构-2-行二进制矩阵"><span class="nav-number"></span> <span class="nav-text">1253. 重构 2 行二进制矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number"></span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5255-奇数值单元格的数目"><span class="nav-number"></span> <span class="nav-text">5255. 奇数值单元格的数目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number"></span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-1"><span class="nav-number"></span> <span class="nav-text">题解</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">52hertz</span>
+</div>
+
+
+
+<div class="theme-info">
+  
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 加载爱心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
