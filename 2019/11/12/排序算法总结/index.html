@@ -104,16 +104,19 @@
 
 
 
-<meta name="description" content="Koreyoshi">
+<meta name="description" content="基本概念内部和外部排序内部排序在这里指的是只用到了电脑内存而不使用外存的排序方式。相对的，外部排序就是同时动用了电脑内存和外存的排序方式。本文在这里只讨论内部排序。 分类比较和非比较排序比较在这里指的是需要比较两个元素的大小(前后)才能进行的排序。难道有排序算法不需要比较吗？的确有，但是不多。常见的有三种：计数排序，桶排序，基数排序。它们用统计的方法规避了比较，详细的可查看之后讲到的这些算法。 转">
 <meta name="keywords" content="sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++（内部）排序算法">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93&#x2F;index.html">
 <meta property="og:site_name" content="52hertz">
-<meta property="og:description" content="Koreyoshi">
+<meta property="og:description" content="基本概念内部和外部排序内部排序在这里指的是只用到了电脑内存而不使用外存的排序方式。相对的，外部排序就是同时动用了电脑内存和外存的排序方式。本文在这里只讨论内部排序。 分类比较和非比较排序比较在这里指的是需要比较两个元素的大小(前后)才能进行的排序。难道有排序算法不需要比较吗？的确有，但是不多。常见的有三种：计数排序，桶排序，基数排序。它们用统计的方法规避了比较，详细的可查看之后讲到的这些算法。 转">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-12T05:44:10.872Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93&#x2F;2.png">
+<meta property="og:updated_time" content="2019-11-12T10:55:04.155Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93&#x2F;1.png">
 
 
 
@@ -288,7 +291,7 @@
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">-ACM</span>
+                    <span itemprop="name">ACM</span>
                   </a>
                 </span>
 
@@ -320,7 +323,22 @@
       
 
       
-        
+        <p>基本概念<br>内部和外部排序<br>内部排序在这里指的是只用到了电脑内存而不使用外存的排序方式。相对的，外部排序就是同时动用了电脑内存和外存的排序方式。本文在这里只讨论内部排序。</p>
+<p>分类<br>比较和非比较排序<br>比较在这里指的是需要比较两个元素的大小(前后)才能进行的排序。难道有排序算法不需要比较吗？的确有，但是不多。常见的有三种：计数排序，桶排序，基数排序。它们用统计的方法规避了比较，详细的可查看之后讲到的这些算法。</p>
+<p>转换<br>每次只调换两个元素之间的位置。</p>
+<p>插入<br>遍历到的元素放入之前维护的已完成排序的序列中。</p>
+<p>选择<br>选择剩余元素中最大或最小的元素。</p>
+<p><img src="/2019/11/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/1.png" alt="1"></p>
+<h2 id="稳定度-Stability"><a href="#稳定度-Stability" class="headerlink" title="稳定度 (Stability)"></a>稳定度 (Stability)</h2><p>定义：如果排序算法并不改变两个相同值的元素的相对位置，则此算法稳定度高。</p>
+<p>这张图十分形象地解释了以上定义：</p>
+<p><strong>我的理解：当数据中存在俩个或俩个以上键值相等的元素时，这些元素在在排序前后顺序不变。</strong></p>
+<p><strong>（不相邻的元素在排序中不会直接交换顺序）</strong></p>
+<p><img src="/2019/11/12/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/2.png" alt="2"></p>
+<h1 id="冒泡排序-Bubble-Sort"><a href="#冒泡排序-Bubble-Sort" class="headerlink" title="冒泡排序 (Bubble Sort)"></a>冒泡排序 (Bubble Sort)</h1><hr>
+<h2 id="1-算法"><a href="#1-算法" class="headerlink" title="1 算法"></a>1 算法</h2><p>从第一个元素开始遍历，比较当前元素跟下一个元素的大小，如果不符合排序，交换位置。结束最后一个元素后，再从头开始不断遍历，直到完成排序。</p>
+<h4 id="2-代码"><a href="#2-代码" class="headerlink" title="2 代码"></a>2 代码</h4><h5 id="基本"><a href="#基本" class="headerlink" title="基本"></a><strong>基本</strong></h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.size()<span class="number">-1</span>;i++)&#123; <span class="comment">//only need n-1 swaps to move the smallest to the front</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr.size()<span class="number">-1</span>;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>]) swap(arr[j],arr[j+<span class="number">1</span>]);</span><br><span class="line">			<span class="comment">//arr[j]&gt;arr[j+1] stable</span></span><br><span class="line">			<span class="comment">//arr[j]&gt;=arr[j+1] unstable</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="优化1-每遍历完一遍，看是否已经提前完成排序-用-hasSorted-。如是，提早结束。"><a href="#优化1-每遍历完一遍，看是否已经提前完成排序-用-hasSorted-。如是，提早结束。" class="headerlink" title="优化1: 每遍历完一遍，看是否已经提前完成排序(用 hasSorted)。如是，提早结束。"></a>优化1: 每遍历完一遍，看是否已经提前完成排序(用 hasSorted)。如是，提早结束。</h5>
       
     </div>
 
@@ -436,7 +454,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -515,7 +533,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#稳定度-Stability"><span class="nav-number">1.</span> <span class="nav-text">稳定度 (Stability)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序-Bubble-Sort"><span class="nav-number"></span> <span class="nav-text">冒泡排序 (Bubble Sort)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-算法"><span class="nav-number">1.</span> <span class="nav-text">1 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-代码"><span class="nav-number">1.0.1.</span> <span class="nav-text">2 代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">基本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化1-每遍历完一遍，看是否已经提前完成排序-用-hasSorted-。如是，提早结束。"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">优化1: 每遍历完一遍，看是否已经提前完成排序(用 hasSorted)。如是，提早结束。</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
