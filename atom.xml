@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-15T09:55:12.458Z</updated>
+  <updated>2019-11-15T11:01:18.682Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用文字替换网页链接</title>
+    <link href="http://yoursite.com/2019/11/15/%E7%94%A8%E6%96%87%E5%AD%97%E6%9B%BF%E6%8D%A2%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5/"/>
+    <id>http://yoursite.com/2019/11/15/用文字替换网页链接/</id>
+    <published>2019-11-15T10:58:26.000Z</published>
+    <updated>2019-11-15T11:01:18.682Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="怎么把一个网址链接转换成文字的形式，-就是点一下那段文字就进入该网站"><a href="#怎么把一个网址链接转换成文字的形式，-就是点一下那段文字就进入该网站" class="headerlink" title="怎么把一个网址链接转换成文字的形式， 就是点一下那段文字就进入该网站"></a>怎么把一个网址链接转换成文字的形式， 就是点一下那段文字就进入该网站</h3><p>何把一个网址链接转换成文字的形式，点击一下那个文字，就可以进入该网站了？</p><p>我今天上午试做了，现在跟有需求但不会操作的朋友们分享一下：<br>我是在MarkDown编辑器上完成的，先打开MarkDown编辑器，然后按照下面的程序编写就是了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a  href =&quot;完整的地址链接&quot;&gt;代替的文字 &lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;怎么把一个网址链接转换成文字的形式，-就是点一下那段文字就进入该网站&quot;&gt;&lt;a href=&quot;#怎么把一个网址链接转换成文字的形式，-就是点一下那段文字就进入该网站&quot; class=&quot;headerlink&quot; title=&quot;怎么把一个网址链接转换成文字的形式， 就是点一下
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下安装程序的三种方法</title>
@@ -332,32 +358,6 @@
     
     
       <category term="sort" scheme="http://yoursite.com/tags/sort/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode之前的几道小题</title>
-    <link href="http://yoursite.com/2019/11/11/leetcode%E4%B9%8B%E5%89%8D%E7%9A%84%E5%87%A0%E9%81%93%E5%B0%8F%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/11/11/leetcode之前的几道小题/</id>
-    <published>2019-11-11T10:16:22.000Z</published>
-    <updated>2019-11-13T05:12:10.486Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="leetcode-1232-缀点成线"><a href="#leetcode-1232-缀点成线" class="headerlink" title="leetcode 1232.缀点成线"></a>leetcode 1232.缀点成线</h3><p>在一个 XY 坐标系中有一些点，我们用数组 coordinates 来分别记录它们的坐标，其中 coordinates[i] = [x, y] 表示横坐标为 x、纵坐标为 y 的点。</p><p>请你来判断，这些点是否在该坐标系中属于同一条直线上，是则返回 true，否则请返回 false。</p><p>示例 1：</p><p><img src="/2019/11/11/leetcode%E4%B9%8B%E5%89%8D%E7%9A%84%E5%87%A0%E9%81%93%E5%B0%8F%E9%A2%98/1.jpg" alt="1"></p><p>输入：coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]<br>输出：true<br>示例 2：</p><p><img src="/2019/11/11/leetcode%E4%B9%8B%E5%89%8D%E7%9A%84%E5%87%A0%E9%81%93%E5%B0%8F%E9%A2%98/2.jpg" alt="2"></p><p>输入：coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]<br>输出：false</p><p>提示：</p><p>2 &lt;= coordinates.length &lt;= 1000<br>coordinates[i].length == 2<br>-10^4 &lt;= coordinates[i][0], coordinates[i][1] &lt;= 10^4<br>coordinates 中不含重复的点</p><h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>两点 A(x0, y0) B(x1, y1) 确定一条直线， 直线的斜率为 k = (y1 - y0) / (x1 - x0)<br>所以我们只要遍历数组，判断当前点和上个点构成的直线的斜率是否和之前相同即可。</p><p>这里不需要求出 k，因为直接求出 k 可能为浮点数，不一定精确，所以我们用交叉相乘判断相等即可。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkStraightLine</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; coordinates)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> x=coordinates[<span class="number">1</span>][<span class="number">0</span>]-coordinates[<span class="number">0</span>][<span class="number">0</span>],y=coordinates[<span class="number">1</span>][<span class="number">1</span>]-coordinates[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="keyword">int</span>)coordinates.size()<span class="number">-1</span>;++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> xx=coordinates[i+<span class="number">1</span>][<span class="number">0</span>]-coordinates[i][<span class="number">0</span>],yy=coordinates[i+<span class="number">1</span>][<span class="number">1</span>]-coordinates[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (yy*x!=y*xx) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="leetcode-1221-分割平衡字符串"><a href="#leetcode-1221-分割平衡字符串" class="headerlink" title="leetcode 1221.分割平衡字符串"></a>leetcode 1221.分割平衡字符串</h3><p>在一个「平衡字符串」中，’L’ 和 ‘R’ 字符的数量是相同的。</p><p>给出一个平衡字符串 s，请你将它分割成尽可能多的平衡字符串。</p><p>返回可以通过分割得到的平衡字符串的最大数量。</p><p>示例 1：</p><p>输入：s = “RLRRLLRLRL”<br>输出：4<br>解释：s 可以分割为 “RL”, “RRLL”, “RL”, “RL”, 每个子字符串中都包含相同数量的 ‘L’ 和 ‘R’。<br>示例 2：</p><p>输入：s = “RLLLLRRRLR”<br>输出：3<br>解释：s 可以分割为 “RL”, “LLLRRR”, “LR”, 每个子字符串中都包含相同数量的 ‘L’ 和 ‘R’。<br>示例 3：</p><p>输入：s = “LLLLRRRR”<br>输出：1<br>解释：s 只能保持原样 “LLLLRRRR”.</p><p>提示：</p><p>1 &lt;= s.length &lt;= 1000<br>s[i] = ‘L’ 或 ‘R’</p><h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>贪心算法</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">balancedStringSplit</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> R = count(s.begin(),s.end(),<span class="string">'R'</span>),L = R;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it : s)&#123;</span><br><span class="line">        <span class="keyword">if</span>(it == <span class="string">'R'</span>) --R;</span><br><span class="line">        <span class="keyword">else</span> --L;</span><br><span class="line">        <span class="keyword">if</span>(L == R) ++ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="LeetCode-1-俩数之和"><a href="#LeetCode-1-俩数之和" class="headerlink" title="LeetCode 1.俩数之和"></a>LeetCode 1.俩数之和</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p><p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p><p>示例:</p><p>给定 nums = [2, 7, 11, 15], target = 9</p><p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p><h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>别人代码  看懂之后再写题解</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">hash_node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;            <span class="comment">/* we'll use this field as the key */</span></span><br><span class="line">    <span class="keyword">int</span> index;</span><br><span class="line">    UT_hash_handle hh; <span class="comment">/* makes this structure hashable */</span></span><br><span class="line">&#125; hash_node;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">twoSum</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span> target, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *two_nums = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">2</span>);</span><br><span class="line">    hash_node *hash_table = <span class="literal">NULL</span>, *hash_item1 = <span class="literal">NULL</span>, *hash_item2 = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        <span class="comment">// 查找哈希表中是否存在满足和为target的另一个值,若存在直接返回</span></span><br><span class="line">        <span class="keyword">int</span> other_id = target - *(nums+i);</span><br><span class="line">        HASH_FIND_INT(hash_table, &amp;other_id, hash_item1);</span><br><span class="line">        <span class="keyword">if</span> (hash_item1) &#123;</span><br><span class="line">            two_nums[<span class="number">0</span>] = hash_item1-&gt;index;</span><br><span class="line">            two_nums[<span class="number">1</span>] = i;</span><br><span class="line">            *returnSize = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> two_nums;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将本次遍历的值放入哈希表,value为数组下标,key为对应数值</span></span><br><span class="line">        hash_item2 = (hash_node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(hash_node));</span><br><span class="line">        hash_item2-&gt;id = *(nums+i);</span><br><span class="line">        hash_item2-&gt;index = i;</span><br><span class="line">        HASH_ADD_INT(hash_table, id, hash_item2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> two_nums;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;leetcode-1232-缀点成线&quot;&gt;&lt;a href=&quot;#leetcode-1232-缀点成线&quot; class=&quot;headerlink&quot; title=&quot;leetcode 1232.缀点成线&quot;&gt;&lt;/a&gt;leetcode 1232.缀点成线&lt;/h3&gt;&lt;p&gt;在一个 XY
-      
-    
-    </summary>
-    
-    
-      <category term="acm" scheme="http://yoursite.com/categories/acm/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
   </entry>
   
