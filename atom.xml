@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-16T02:53:59.505Z</updated>
+  <updated>2019-11-16T03:19:03.348Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo本地博客转移</title>
+    <link href="http://yoursite.com/2019/11/16/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB/"/>
+    <id>http://yoursite.com/2019/11/16/hexo本地博客转移/</id>
+    <published>2019-11-16T03:07:54.000Z</published>
+    <updated>2019-11-16T03:19:03.348Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-复制配置文件"><a href="#1-复制配置文件" class="headerlink" title="1. 复制配置文件"></a>1. 复制配置文件</h4><p>将原来的配置文件进行备份，只需要将文件夹 source、themes和配置文件_config.yml备份即可。</p><p><img src="/2019/11/16/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB/1.png" alt="1"></p><h4 id="2-安装Node-js"><a href="#2-安装Node-js" class="headerlink" title="2.安装Node.js"></a>2.安装Node.js</h4><p>sudo apt-get install nodejs<br>sudo apt-get install npm</p><h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3.安装hexo"></a>3.安装hexo</h4><p>sudo npm install -g hexo</p><h4 id="4-新建文件夹，cd进入"><a href="#4-新建文件夹，cd进入" class="headerlink" title="4.新建文件夹，cd进入"></a>4.新建文件夹，cd进入</h4><p>hexo init<br>使用hexo s查看是否能使用。</p><h4 id="5-将备份的文件覆盖到现在的文件夹"><a href="#5-将备份的文件覆盖到现在的文件夹" class="headerlink" title="5.将备份的文件覆盖到现在的文件夹"></a>5.将备份的文件覆盖到现在的文件夹</h4><p>现在使用hexo s查看是否已经成功。</p><p>此时，所有工作已经完成。</p><h3 id="最安全的hexo多台电脑同步博客解决方案–非新建分支"><a href="#最安全的hexo多台电脑同步博客解决方案–非新建分支" class="headerlink" title="最安全的hexo多台电脑同步博客解决方案–非新建分支"></a>最安全的hexo多台电脑同步博客解决方案–非新建分支</h3><p>我们经常有这样一个需求场景：需要在多台电脑间完成 Hexo 博客的撰写和发布，这就涉及到如何多台电脑同步博客的问题。</p><p><strong>我最近也遇到了这个问题，网上看了很多方案。目前网上大部分 hexo 多电脑同步博客方案都是新建一个开源分支去存放博客源文件，但是你会发现，这样做的话很多第三插件配置的appid、app_key等密钥信息也暴露在了公开的仓库里，存在一定的数据安全隐患。</strong></p><p><strong>那有没有什么办法不暴露这些信息呢？对了，用一个私有仓库来存放博客源文件不就结了嘛。虽然 Github 的私有仓库是收费的，但是我的博客是同时部署在 Github 和 Coding 的，而 Coding 是可以新建私有仓库的。Nice，完美解决。</strong></p><p>当我准备写遍博客来分享（xuan yao）想到的这个解决方案时，最后还是荣幸的发现一遍文章已经分享了这个方案，只是在搜索引擎中不太好搜出来。本着“不重复造轮子的原则”，笔者就不重写了，而且他已经写的很好了。但是有几个问题需要特别注意一下：</p><ol><li><p>该文中删除主题的 .git 配置，如果你有多个主题文件夹的话，需要都删除(如 NexT 主题)。然后删除的命令那位笔者不小心写错了，应该是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ./themes/next/.git/</span><br></pre></td></tr></table></figure><p>用这条命令来删除你对应主题文件夹里的.git 文件夹，注意 .git 是一个隐藏文件夹。</p></li><li><p><code>.gitignore</code> 文件夹在 Hexo 的根目录下可能已经存在了，可以打开和该文中的忽略事项比对一下，如果一样，接着 <code>git init</code> 初始化 git 仓库就好；如果没有该 <code>.gitignore</code> 文件夹就新建一个添加相应忽略事项再 <code>git init</code> 初始化。</p></li><li><p><strong>这点需要特别注意，否则可能导致迁移失败：</strong><br>虽然我们第 1 步中删除了主题的 .git 配置，第 2 步中Hexo项目根目录的 <code>.gitignore</code> 文件也并没有忽略掉 <code>theme</code> 这个文件夹。<strong>但是！！</strong> NexT 主题的文件夹原来是用 git 来管理的，里面还有一个 <code>.gitignore</code> 文件，把 <code>themes/next/source/lib</code> 目录下的很多文件给忽略掉了。</p><p>这就导致了你上传到私有仓库时，你以为你把 <code>themes</code> 文件下的所有内容都上传到仓库了，但其实 “偷偷”的把 <code>themes/next/source/lib</code> 目录下的很多必要的文件也忽略掉了，并没有上传。然后在新电脑上拉下来的时候，<code>hexo g</code>、<code>hexo s</code> 一预览，你会奇怪的发现：<strong>所有的 FontAwesome 相关的图标都不见了，其他的功能一切正常。</strong></p><p><strong>正确的做法是</strong>：在新机器上把私有仓库上的博客源文件 clone 下来后，因为还缺点原来的文件，所以应该去原来机器上 <code>themes/next/source/lib</code> 目录下，把整个 lib 目录下的文件全部复制粘贴到新机器对应的 <code>themes/next/source/lib</code> 目录下，这样就能正常生成站点文件了。</p><blockquote><p>注意：同理，如果你的 <code>themes</code> 目录下有多个主题配置文件的话，可以查看是否有 <code>.gitignore</code> 文件，用 git 上传私有仓库时是否也忽略了一些必要资源，如果有再新电脑上对应复制过来就 OK 了。</p></blockquote><p>关于这个问题的详情，可以看这：<a href="https://github.com/theme-next/hexo-theme-next/issues/564#issuecomment-451385682" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next/issues/564#issuecomment-451385682</a></p></li><li><p>在新电脑上 <code>npm install</code> 下载 hexo 所需的环境的时候，要切到 hexo 的根目录下，再执行 <code>npm install</code>。</p></li><li><p>当你在新电脑用 <code>npm install</code> 下载依赖的第三插件时，由于 node 的版本、众多第三方插件、跨平台等原因，可能有的插件会存在兼容性问题，导致下载不下来，笔者想迁移到 Mac 上就遇到兼容性问题了，<code>fsevent</code> 插件目前不支持 node v11+ 版本，而刚配置新电脑的 node 环境时，默认安装的是最新版的 node，需要降低 node 的版本才能下载成功。</p><p><a href="https://www.alankeene.com/2019/0102/fsevents-didnot-soppurt-node11.html" target="_blank" rel="noopener">node 11 无法安装 fsevents 插件的解决方案</a></p><p>至于如何降低 node 的版本，其实你不用删除，有一个叫 <code>nvm</code> （Node Version Manager）的工具，专门用来管理多个版本的 node 环境的，你可以下载多个版本的 node 存在你的机器中，用 <code>nvm</code> 的命令行就可以实现不同版本 node 环境的随意切换，非常方便。</p><p><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">这是 nvm 的 github 地址</a></p></li><li><p>好，当你在新的电脑上写完博客，本地预览也没问题，准备用 hexo d 部署到 Github 和 Coding 上前，别忘了把新电脑的 SSH 公钥配置到 Github 和 Coding 上。</p><p>然后用 hexo d部署时，由于在新机器上，SSH 密钥和之前的不一样，第一次尝试连接 Github 主机时会提示：<br><code>The authenticity of host &#39;github.com&#39; can&#39;t be established.</code><br><code>Are you sure you want continue connecting?</code></p><p>输入 yes 就好，同理 coding 仓库也会提示，同样输入yes。至此，新电脑上写完的博客也成功同步更新到 Github 和 Coding 的仓库上了。</p><p>更新完博客后，记得 用 git push 将新电脑上改动的博客源文件也 push 到私有仓库中，实现博客源文件的同步更新。</p></li><li><p>当你在另一台电脑上准备开始写博客前，记得把远程私有仓库的最新博客源文件拉到本地，<strong>但记得不要用 <code>git pull</code> 的方式</strong>，用如下两条命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//将远程 git 仓库上最新的内容拉取到本地，将本地库所关联的远程库更新至最新</span><br><span class="line">git fetch --all</span><br><span class="line">//强制将本地库的内容指向最新远程仓库的master分支   </span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure></li></ol><p>最后附上该篇博客的地址：</p><ul><li><a href="https://ricky.moe/2017/01/13/hexo-perfect-synchronize/" target="_blank" rel="noopener">最完美的Hexo多电脑同步方法</a></li></ul><p>从此，你就可以在多台电脑间愉快地同步更新博客啦～<br>若到一台新的电脑上，只要把博客源码 clone 下来，配置好新机器的 <code>node</code>、<code>hexo</code>、<code>git</code> 环境，随时可以发车～</p><p><strong><code>2019.1.8 最新更新：</code> 好消息是：Github 从 2019.1.8 日起可以免费使用私有仓库了，那大家也可以选择把博客源文件传到 Github 私有仓库上，维护起来更加方便了。</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1-复制配置文件&quot;&gt;&lt;a href=&quot;#1-复制配置文件&quot; class=&quot;headerlink&quot; title=&quot;1. 复制配置文件&quot;&gt;&lt;/a&gt;1. 复制配置文件&lt;/h4&gt;&lt;p&gt;将原来的配置文件进行备份，只需要将文件夹 source、themes和配置文件_conf
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux安装包的区别</title>
+    <link href="http://yoursite.com/2019/11/16/linux%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2019/11/16/linux安装包的区别/</id>
+    <published>2019-11-16T03:00:01.000Z</published>
+    <updated>2019-11-16T03:05:31.885Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="deb、rpm、tar-gz三种Linux软件包的区别"><a href="#deb、rpm、tar-gz三种Linux软件包的区别" class="headerlink" title="deb、rpm、tar.gz三种Linux软件包的区别"></a>deb、rpm、tar.gz三种Linux软件包的区别</h4><p>接解LINUX的，同样都是for linux，但rpm、tar.gz、deb包还是有很大区别的，</p><p>这种区别可使安装过程进行不下去。那我们应该下载什么格式的包呢？</p><p>**rpm包-在红帽LINUX、SUSE、Fedora可以直接进行安装，但在Ubuntu中却无法识别；</p><p>deb包-是Ubuntu的专利，在Ubuntu中双击deb包就可以进入自动安装进程；</p><p> tar.gz包-在所有的Linux版本中都能使用，但安装过程也最麻烦。 </p><p>​     要先解压缩，然后在“终端”里用cd命令进入刚才解压的目录，再找到安装链接文件安装。</p><p>   比如tar.gz包解压到了“/temp/*****.tar.gz/”，tar.gz包中的安装链接文件为install：</p><p>​     1- cd/temp/*****.tar.gz/</p><p>​     2- ./install</p><p>​     3- 根据提示输入“ENTER”或“安装目录”</p><p>​     4- 结束</p><h4 id="tar-gz和-zip文件的区别"><a href="#tar-gz和-zip文件的区别" class="headerlink" title=".tar.gz和.zip文件的区别"></a>.tar.gz和.zip文件的区别</h4><p>在一开始下载数据集的时候遇到的疑惑</p><p>他们的不同点在于：</p><p>1 .tar.gz文件一般用于Linux系统上，而.zip文件一般流行于Windows系统上</p><p>2 .tar.gz格式的文件比.zip文件要小很多</p><p>虽然这两种格式的文件有许多不同，但他们都是压缩文件，且文件里包含的内容相同，在windows系统中WinRar等工具同样可以解压缩tar.gz格式的</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;deb、rpm、tar-gz三种Linux软件包的区别&quot;&gt;&lt;a href=&quot;#deb、rpm、tar-gz三种Linux软件包的区别&quot; class=&quot;headerlink&quot; title=&quot;deb、rpm、tar.gz三种Linux软件包的区别&quot;&gt;&lt;/a&gt;deb、r
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu如何卸载软件</title>
@@ -316,47 +368,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>递归和分治法</title>
-    <link href="http://yoursite.com/2019/11/12/%E9%80%92%E5%BD%92%E5%92%8C%E5%88%86%E6%B2%BB%E6%B3%95/"/>
-    <id>http://yoursite.com/2019/11/12/递归和分治法/</id>
-    <published>2019-11-12T05:49:07.000Z</published>
-    <updated>2019-11-12T05:49:07.666Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>deepin 搭建hexo</title>
-    <link href="http://yoursite.com/2019/11/12/deepin-%E6%90%AD%E5%BB%BAhexo/"/>
-    <id>http://yoursite.com/2019/11/12/deepin-搭建hexo/</id>
-    <published>2019-11-12T05:24:09.000Z</published>
-    <updated>2019-11-12T10:57:04.128Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="deepin系统下Hexo博客安装"><a href="#deepin系统下Hexo博客安装" class="headerlink" title="deepin系统下Hexo博客安装"></a>deepin系统下Hexo博客安装</h2><h3 id="0-更新和升级系统软件包"><a href="#0-更新和升级系统软件包" class="headerlink" title="0.更新和升级系统软件包"></a>0.更新和升级系统软件包</h3><p>首先，确保系统软件包是最新的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br></pre></td></tr></table></figure><p>其次，如果要在github上创建一个重新发布目录，则应<a href="https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04" target="_blank" rel="noopener">安装Git</a>。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br><span class="line">sudo apt install git-core -y</span><br></pre></td></tr></table></figure><p>注：上面m俩个语句应该都行，运行其中一句就行</p><h3 id="1-安装node-js"><a href="#1-安装node-js" class="headerlink" title="1.安装node.js"></a>1.安装node.js</h3><p>使用nvm（node.js版本管理器）<a href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server#how-to-install-using-nvm" target="_blank" rel="noopener">安装node.js</a></p><h4 id="1-安装基本环境库"><a href="#1-安装基本环境库" class="headerlink" title="1.安装基本环境库"></a>1.安装基本环境库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libssl-dev</span><br></pre></td></tr></table></figure><h4 id="2-从nvm的GitHub页面上下拉nvm安装脚本并安装nvm"><a href="#2-从nvm的GitHub页面上下拉nvm安装脚本并安装nvm" class="headerlink" title="2.从nvm的GitHub页面上下拉nvm安装脚本并安装nvm"></a>2.从<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm的GitHub页面上</a>下拉nvm安装脚本并安装nvm</h4><p>使用cURL：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure><p>使用Wget：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure><h4 id="3-然后更新个人资料"><a href="#3-然后更新个人资料" class="headerlink" title="3.然后更新个人资料"></a>3.然后更新个人资料</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure><h4 id="4-安装node-js"><a href="#4-安装node-js" class="headerlink" title="4.安装node.js"></a>4.安装node.js</h4><p>找出可用于安装的Node.js版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote</span><br><span class="line">        ......</span><br><span class="line">         v6.5.0</span><br><span class="line">         v6.6.0</span><br><span class="line">         v6.7.0</span><br><span class="line">         v6.8.0</span><br><span class="line">         v6.8.1</span><br><span class="line">         v6.9.0   (LTS: Boron)</span><br><span class="line">         v6.9.1   (LTS: Boron)</span><br><span class="line">         v6.9.2   (LTS: Boron)</span><br><span class="line">         v6.9.3   (LTS: Boron)</span><br><span class="line">         v6.9.4   (LTS: Boron)</span><br><span class="line">         v6.9.5   (LTS: Boron)</span><br><span class="line">         v6.10.0   (LTS: Boron)</span><br><span class="line">         v6.10.1   (Latest LTS: Boron)</span><br><span class="line">         v7.0.0</span><br><span class="line">        ......</span><br></pre></td></tr></table></figure><p>如我们所见，最新的LTS是6.10.1，我们可以安装它并明确声明使用版本是6.10.1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm install 6.10.1</span><br><span class="line">nvm use 6.10.1</span><br></pre></td></tr></table></figure><p>如果您有多个Node.js版本，则可以通过键入以下内容查看安装的内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls</span><br></pre></td></tr></table></figure><p>如果您希望默认使用其中一个版本，则可以输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 6.10.1</span><br></pre></td></tr></table></figure><p>产生新会话时，将自动选择此版本。您还可以通过如下别名来引用它：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use default</span><br></pre></td></tr></table></figure><h3 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2.安装hexo"></a>2.安装hexo</h3><p>使用npm（node.js软件包管理器）<a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="noopener">安装hexo</a>。</p><h4 id="1-安装最重要的hexo-cli，并提供核心Hexo命令。"><a href="#1-安装最重要的hexo-cli，并提供核心Hexo命令。" class="headerlink" title="1.安装最重要的hexo-cli，并提供核心Hexo命令。"></a>1.安装最重要的<em>hexo-cli</em>，并提供核心Hexo命令。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><h4 id="2-安装内置服务器hexo-server。"><a href="#2-安装内置服务器hexo-server。" class="headerlink" title="2.安装内置服务器hexo- server。"></a>2.安装<em>内置服务器hexo-</em> server。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-server -g</span><br></pre></td></tr></table></figure><blockquote><p>安装程序包抛出错误：sh：1：节点：权限被拒绝</p></blockquote><p>固定：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set unsafe-perm true</span><br></pre></td></tr></table></figure><p>说明：</p><blockquote><p>unsafe-perm：如果以root用户身份运行，则为false（默认），否则为true。设置为true以在运行时禁止UID / GID切换</p></blockquote><h4 id="3-初始化hexo主目录并安装博客项目。"><a href="#3-初始化hexo主目录并安装博客项目。" class="headerlink" title="3.初始化hexo主目录并安装博客项目。"></a>3.初始化hexo主目录并安装博客项目。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir Blog</span><br><span class="line">cd Blog/</span><br><span class="line">mkdir hexo</span><br><span class="line">cd hexo/</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure><h4 id="4、测试安装成功"><a href="#4、测试安装成功" class="headerlink" title="4、测试安装成功"></a>4、测试安装成功</h4><p>打开 Hexo 服务</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure><p>此时打开浏览器访问自己【主机的ip：4000】就可以看到我们搭建成功的博客页面。</p><p>但是这仅仅是本地的，接下来把博客部署到 GitHub 上面我们就可以脱离本地访问了。</p><h3 id="三、-将博客部署到-GitHub"><a href="#三、-将博客部署到-GitHub" class="headerlink" title="三、 将博客部署到 GitHub"></a>三、 将博客部署到 GitHub</h3><h4 id="1、注册-GitHub"><a href="#1、注册-GitHub" class="headerlink" title="1、注册 GitHub"></a>1、注册 GitHub</h4><p>​    </p><p>如果没有GitHub账户的先去去注册GitHub账户，有GitHub账户的直接下一步;</p><h4 id="2、设置-user-name-和-user-email"><a href="#2、设置-user-name-和-user-email" class="headerlink" title="2、设置 user.name 和 user.email"></a>2、设置 user.name 和 user.email</h4><p>注册好之后回来自己的机器上</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your user.name&quot;</span><br><span class="line">git config --global user.email &quot;You user.email&quot;</span><br></pre></td></tr></table></figure><p>“ “里面换成自己的user.name和user.email;</p><p>3、生成 shh 密匙<br>ssh-keygen -t rsa -C user.email<br>下面提示输入要保存到的路径，我们输入</p><p> /home/ubuntu/.ssh/id_rsa<br>然后下面直接回车回车；</p><p>4、查看 shh 密匙<br> vim /home/ubuntu/.ssh/id_rsa<br>把密匙复制一下，接下来去 GitHub 账户下添加 SSH key；</p><p>5、在 GitHub 账户添加 SSH key<br>添加 ssh key ，点击传送；</p><p>6、创建 GitHub 仓库<br>命名格式为”账户的userName”.github.io</p><p>例如 ： zhangsan.github.io</p><p>去<a href="传送">创建GitHub仓库</a></p><p>7、修改 hexo 配置文件<br>进入到自己的hexo 安装目录下 ，打开_config.yml文件</p><p>修改下面这部分；</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: git@github.com:(BoView)/(BoView).github.io.git #括号里面换成自己的用户名和仓库名,去掉括号</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure><h4 id="8、部署"><a href="#8、部署" class="headerlink" title="8、部署"></a>8、部署</h4><p>安装 hexo-deployer-git 插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//生成静态页面</span><br><span class="line">hexo g</span><br><span class="line">//将public文件内容部署到github仓库</span><br><span class="line">hexo d</span><br><span class="line">//这两条是常用的命令，后者也可以这样</span><br><span class="line">hexo d -g</span><br><span class="line">//或者</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure><p>此时可以打开浏览器访问userName.github.io(GitHub仓库名)</p><p>即可以访问到搭建的博客页面</p><p>到这里基本完成任务了，但是我们想更完美一点，再绑定个域名，然后用域名访问岂不美哉；</p><h5 id="还有bug的话，Google解决！！！！！！！！！"><a href="#还有bug的话，Google解决！！！！！！！！！" class="headerlink" title="**         还有bug的话，Google解决！！！！！！！！！**"></a>**         还有bug的话，Google解决！！！！！！！！！**</h5>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;deepin系统下Hexo博客安装&quot;&gt;&lt;a href=&quot;#deepin系统下Hexo博客安装&quot; class=&quot;headerlink&quot; title=&quot;deepin系统下Hexo博客安装&quot;&gt;&lt;/a&gt;deepin系统下Hexo博客安装&lt;/h2&gt;&lt;h3 id=&quot;0-更新和
-      
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   

@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="hexo," />
 
 
 
@@ -104,16 +104,18 @@
 
 
 
-<meta name="description" content="UBUNTU下安装程序的三种方法在ubuntu当中，安装应用程序我所知道的有三种方法，分别是apt-get，dpkg安装deb和make install安装源码包三种。下面针对每一种方法各举例来说明。 (1)apt-get方法使用apt-get install来安装应用程序算是最常见的一种安装方法了，比如我要安装build-essential这个软件，使用以下，他会帮我把所有的依赖包都一起安装了。">
-<meta name="keywords" content="Linux">
+<meta name="description" content="1. 复制配置文件将原来的配置文件进行备份，只需要将文件夹 source、themes和配置文件_config.yml备份即可。  2.安装Node.jssudo apt-get install nodejssudo apt-get install npm 3.安装hexosudo npm install -g hexo 4.新建文件夹，cd进入hexo init使用hexo s查看是否能使用。">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下安装程序的三种方法">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;15&#x2F;Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95&#x2F;index.html">
+<meta property="og:title" content="hexo本地博客转移">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB&#x2F;index.html">
 <meta property="og:site_name" content="52hertz">
-<meta property="og:description" content="UBUNTU下安装程序的三种方法在ubuntu当中，安装应用程序我所知道的有三种方法，分别是apt-get，dpkg安装deb和make install安装源码包三种。下面针对每一种方法各举例来说明。 (1)apt-get方法使用apt-get install来安装应用程序算是最常见的一种安装方法了，比如我要安装build-essential这个软件，使用以下，他会帮我把所有的依赖包都一起安装了。">
+<meta property="og:description" content="1. 复制配置文件将原来的配置文件进行备份，只需要将文件夹 source、themes和配置文件_config.yml备份即可。  2.安装Node.jssudo apt-get install nodejssudo apt-get install npm 3.安装hexosudo npm install -g hexo 4.新建文件夹，cd进入hexo init使用hexo s查看是否能使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-16T02:55:57.854Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB&#x2F;1.png">
+<meta property="og:updated_time" content="2019-11-16T03:19:03.348Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB&#x2F;1.png">
 
 
 
@@ -131,7 +133,7 @@
   };
 </script>
 
-  <title> Ubuntu下安装程序的三种方法 | 52hertz </title>
+  <title> hexo本地博客转移 | 52hertz </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +263,7 @@
             
             
               
-                Ubuntu下安装程序的三种方法
+                hexo本地博客转移
               
             
           </h1>
@@ -273,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2019-11-15T17:48:06+08:00" content="2019-11-15">
-              2019-11-15
+            <time itemprop="dateCreated" datetime="2019-11-16T11:07:54+08:00" content="2019-11-16">
+              2019-11-16
             </time>
           </span>
 
@@ -287,8 +289,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
                   </a>
                 </span>
 
@@ -320,69 +322,57 @@
       
 
       
-        <h3 id="UBUNTU下安装程序的三种方法"><a href="#UBUNTU下安装程序的三种方法" class="headerlink" title="UBUNTU下安装程序的三种方法"></a>UBUNTU下安装程序的三种方法</h3><p>在ubuntu当中，安装应用程序我所知道的有三种方法，分别是apt-get，dpkg安装deb和make install安装源码包三种。下面针对每一种方法各举例来说明。</p>
-<h4 id="1-apt-get方法"><a href="#1-apt-get方法" class="headerlink" title="(1)apt-get方法"></a>(1)apt-get方法</h4><p>使用apt-get install来安装应用程序算是最常见的一种安装方法了，比如我要安装build-essential这个软件，使用以下，他会帮我把所有的依赖包都一起安装了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install 软件名</span><br></pre></td></tr></table></figure>
-
-<p>执行上述命令以后，我们可以看到一下信息，The following extra packages will be installed:表示所有需要再安装的依赖包。</p>
-<p>下面给出apt-get的的各种参数：</p>
-<p>apt-get install xxx 安装xxx  。如果带有参数，那么-d 表示仅下载 ，-f 表示强制安装<br>apt-get remove xxx 卸载xxx<br>apt-get update 更新软件信息数据库<br>apt-get upgrade 进行系统升级<br>apt-cache search 搜索软件包<br>Tips：建议您经常使用“apt-get update”命令来更新您的软件信息数据库 </p>
-<p>apt-get理论上是要求能够联网，但是如果制作了本地源，就不需要联网，制作本地源可以参考：<a href="http://www.cnblogs.com/xwdreamer/p/3875857.html" target="_blank" rel="noopener">ubuntu制作本地源</a></p>
-<h4 id="2-dpkg安装deb包"><a href="#2-dpkg安装deb包" class="headerlink" title="(2)dpkg安装deb包"></a>(2)dpkg安装deb包</h4><p>Ubuntu软件包格式为deb，安装方法如下：</p>
-<p>  sudo dpkg -i package.deb</p>
-<p>dpkg的详细使用方法，网上有很多，下面简单列了几个：</p>
-<p>dpkg -i package.deb安装包</p>
-<p>dpkg -r package删除包</p>
-<p>dpkg -P package删除包（包括配置文件）</p>
-<p>dpkg -L package列出与该包关联的文件</p>
-<p>dpkg -l package显示该包的版本</p>
-<p>dpkg –unpack package.deb解开 deb 包的内容</p>
-<p>dpkg -S keyword搜索所属的包内容</p>
-<p>dpkg -l列出当前已安装的包</p>
-<p>dpkg -c package.deb列出 deb 包的内容</p>
-<p>dpkg –configure package配置包</p>
-<h4 id="make-install源代码安装"><a href="#make-install源代码安装" class="headerlink" title="make install源代码安装"></a>make install源代码安装</h4><p>如果要使用make安装的话，那么必须得安装build-essential这个依赖包，安装方法已经在前面说过了。在安装完毕以后，我们就可以进行源码安装。源码安装大致可以分为三步骤：（./configure）–＞ 编译（sudo make） –＞ 安装（sudo make install）。</p>
+        <h4 id="1-复制配置文件"><a href="#1-复制配置文件" class="headerlink" title="1. 复制配置文件"></a>1. 复制配置文件</h4><p>将原来的配置文件进行备份，只需要将文件夹 source、themes和配置文件_config.yml备份即可。</p>
+<p><img src="/2019/11/16/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB/1.png" alt="1"></p>
+<h4 id="2-安装Node-js"><a href="#2-安装Node-js" class="headerlink" title="2.安装Node.js"></a>2.安装Node.js</h4><p>sudo apt-get install nodejs<br>sudo apt-get install npm</p>
+<h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3.安装hexo"></a>3.安装hexo</h4><p>sudo npm install -g hexo</p>
+<h4 id="4-新建文件夹，cd进入"><a href="#4-新建文件夹，cd进入" class="headerlink" title="4.新建文件夹，cd进入"></a>4.新建文件夹，cd进入</h4><p>hexo init<br>使用hexo s查看是否能使用。</p>
+<h4 id="5-将备份的文件覆盖到现在的文件夹"><a href="#5-将备份的文件覆盖到现在的文件夹" class="headerlink" title="5.将备份的文件覆盖到现在的文件夹"></a>5.将备份的文件覆盖到现在的文件夹</h4><p>现在使用hexo s查看是否已经成功。</p>
+<p>此时，所有工作已经完成。</p>
+<h3 id="最安全的hexo多台电脑同步博客解决方案–非新建分支"><a href="#最安全的hexo多台电脑同步博客解决方案–非新建分支" class="headerlink" title="最安全的hexo多台电脑同步博客解决方案–非新建分支"></a>最安全的hexo多台电脑同步博客解决方案–非新建分支</h3><p>我们经常有这样一个需求场景：需要在多台电脑间完成 Hexo 博客的撰写和发布，这就涉及到如何多台电脑同步博客的问题。</p>
+<p><strong>我最近也遇到了这个问题，网上看了很多方案。目前网上大部分 hexo 多电脑同步博客方案都是新建一个开源分支去存放博客源文件，但是你会发现，这样做的话很多第三插件配置的appid、app_key等密钥信息也暴露在了公开的仓库里，存在一定的数据安全隐患。</strong></p>
+<p><strong>那有没有什么办法不暴露这些信息呢？对了，用一个私有仓库来存放博客源文件不就结了嘛。虽然 Github 的私有仓库是收费的，但是我的博客是同时部署在 Github 和 Coding 的，而 Coding 是可以新建私有仓库的。Nice，完美解决。</strong></p>
+<p>当我准备写遍博客来分享（xuan yao）想到的这个解决方案时，最后还是荣幸的发现一遍文章已经分享了这个方案，只是在搜索引擎中不太好搜出来。本着“不重复造轮子的原则”，笔者就不重写了，而且他已经写的很好了。但是有几个问题需要特别注意一下：</p>
 <ol>
-<li>配置：这是编译源代码的第一步，通过 <code>./configure</code> 命令完成。执行此步以便为编译源代码作准备。常用的选项有 <code>--</code>prefix=PREFIX，用以指定程序的安装位置。更多的选项可通过 <code>--</code>help 查询。也有某些程序无需执行此步。</li>
-<li>编译：一旦配置通过，可即刻使用 <code>make</code> 指令来执行源代码的编译过程。视软件的具体情况而定，编译所需的时间也各有差异，我们所要做的就是耐心等候和静观其变。此步虽然仅下简单的指令，但有时候所遇到的问题却十分复杂。较常碰到的情形是程序编译到中途却无法圆满结束。此时，需要根据出错提示分析以便找到应对之策。</li>
-<li>安装：如果编译没有问题，那么执行 <code>sudo make install</code> 就可以将程序安装到系统中了。</li>
+<li><p>该文中删除主题的 .git 配置，如果你有多个主题文件夹的话，需要都删除(如 NexT 主题)。然后删除的命令那位笔者不小心写错了，应该是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ./themes/next/.git/</span><br></pre></td></tr></table></figure>
+
+<p>用这条命令来删除你对应主题文件夹里的.git 文件夹，注意 .git 是一个隐藏文件夹。</p>
+</li>
+<li><p><code>.gitignore</code> 文件夹在 Hexo 的根目录下可能已经存在了，可以打开和该文中的忽略事项比对一下，如果一样，接着 <code>git init</code> 初始化 git 仓库就好；如果没有该 <code>.gitignore</code> 文件夹就新建一个添加相应忽略事项再 <code>git init</code> 初始化。</p>
+</li>
+<li><p><strong>这点需要特别注意，否则可能导致迁移失败：</strong><br>虽然我们第 1 步中删除了主题的 .git 配置，第 2 步中Hexo项目根目录的 <code>.gitignore</code> 文件也并没有忽略掉 <code>theme</code> 这个文件夹。<strong>但是！！</strong> NexT 主题的文件夹原来是用 git 来管理的，里面还有一个 <code>.gitignore</code> 文件，把 <code>themes/next/source/lib</code> 目录下的很多文件给忽略掉了。</p>
+<p>这就导致了你上传到私有仓库时，你以为你把 <code>themes</code> 文件下的所有内容都上传到仓库了，但其实 “偷偷”的把 <code>themes/next/source/lib</code> 目录下的很多必要的文件也忽略掉了，并没有上传。然后在新电脑上拉下来的时候，<code>hexo g</code>、<code>hexo s</code> 一预览，你会奇怪的发现：<strong>所有的 FontAwesome 相关的图标都不见了，其他的功能一切正常。</strong></p>
+<p><strong>正确的做法是</strong>：在新机器上把私有仓库上的博客源文件 clone 下来后，因为还缺点原来的文件，所以应该去原来机器上 <code>themes/next/source/lib</code> 目录下，把整个 lib 目录下的文件全部复制粘贴到新机器对应的 <code>themes/next/source/lib</code> 目录下，这样就能正常生成站点文件了。</p>
+<blockquote>
+<p>注意：同理，如果你的 <code>themes</code> 目录下有多个主题配置文件的话，可以查看是否有 <code>.gitignore</code> 文件，用 git 上传私有仓库时是否也忽略了一些必要资源，如果有再新电脑上对应复制过来就 OK 了。</p>
+</blockquote>
+<p>关于这个问题的详情，可以看这：<a href="https://github.com/theme-next/hexo-theme-next/issues/564#issuecomment-451385682" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next/issues/564#issuecomment-451385682</a></p>
+</li>
+<li><p>在新电脑上 <code>npm install</code> 下载 hexo 所需的环境的时候，要切到 hexo 的根目录下，再执行 <code>npm install</code>。</p>
+</li>
+<li><p>当你在新电脑用 <code>npm install</code> 下载依赖的第三插件时，由于 node 的版本、众多第三方插件、跨平台等原因，可能有的插件会存在兼容性问题，导致下载不下来，笔者想迁移到 Mac 上就遇到兼容性问题了，<code>fsevent</code> 插件目前不支持 node v11+ 版本，而刚配置新电脑的 node 环境时，默认安装的是最新版的 node，需要降低 node 的版本才能下载成功。</p>
+<p><a href="https://www.alankeene.com/2019/0102/fsevents-didnot-soppurt-node11.html" target="_blank" rel="noopener">node 11 无法安装 fsevents 插件的解决方案</a></p>
+<p>至于如何降低 node 的版本，其实你不用删除，有一个叫 <code>nvm</code> （Node Version Manager）的工具，专门用来管理多个版本的 node 环境的，你可以下载多个版本的 node 存在你的机器中，用 <code>nvm</code> 的命令行就可以实现不同版本 node 环境的随意切换，非常方便。</p>
+<p><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">这是 nvm 的 github 地址</a></p>
+</li>
+<li><p>好，当你在新的电脑上写完博客，本地预览也没问题，准备用 hexo d 部署到 Github 和 Coding 上前，别忘了把新电脑的 SSH 公钥配置到 Github 和 Coding 上。</p>
+<p>然后用 hexo d部署时，由于在新机器上，SSH 密钥和之前的不一样，第一次尝试连接 Github 主机时会提示：<br><code>The authenticity of host &#39;github.com&#39; can&#39;t be established.</code><br><code>Are you sure you want continue connecting?</code></p>
+<p>输入 yes 就好，同理 coding 仓库也会提示，同样输入yes。至此，新电脑上写完的博客也成功同步更新到 Github 和 Coding 的仓库上了。</p>
+<p>更新完博客后，记得 用 git push 将新电脑上改动的博客源文件也 push 到私有仓库中，实现博客源文件的同步更新。</p>
+</li>
+<li><p>当你在另一台电脑上准备开始写博客前，记得把远程私有仓库的最新博客源文件拉到本地，<strong>但记得不要用 <code>git pull</code> 的方式</strong>，用如下两条命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//将远程 git 仓库上最新的内容拉取到本地，将本地库所关联的远程库更新至最新</span><br><span class="line">git fetch --all</span><br><span class="line">//强制将本地库的内容指向最新远程仓库的master分支   </span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<p>下面以安装nagios为例进行说明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//1.解压缩</span><br><span class="line">tar -zxf nagios-4.0.2.tar.gz  </span><br><span class="line">//2.进入目录</span><br><span class="line">cd nagios-4.0.2</span><br><span class="line">//3.配置</span><br><span class="line">./configure --prefix=/usr/local/nagios     </span><br><span class="line">//4.编译</span><br><span class="line">make all</span><br><span class="line">//5.安装</span><br><span class="line">make install &amp;&amp; make install-init &amp;&amp; make install-commandmode &amp;&amp; make install-config</span><br></pre></td></tr></table></figure>
+<p>最后附上该篇博客的地址：</p>
+<ul>
+<li><a href="https://ricky.moe/2017/01/13/hexo-perfect-synchronize/" target="_blank" rel="noopener">最完美的Hexo多电脑同步方法</a></li>
+</ul>
+<p>从此，你就可以在多台电脑间愉快地同步更新博客啦～<br>若到一台新的电脑上，只要把博客源码 clone 下来，配置好新机器的 <code>node</code>、<code>hexo</code>、<code>git</code> 环境，随时可以发车～</p>
+<p><strong><code>2019.1.8 最新更新：</code> 好消息是：Github 从 2019.1.8 日起可以免费使用私有仓库了，那大家也可以选择把博客源文件传到 Github 私有仓库上，维护起来更加方便了。</strong></p>
 
-<h3 id="ubuntu制作本地源"><a href="#ubuntu制作本地源" class="headerlink" title="ubuntu制作本地源"></a>ubuntu制作本地源</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>平时apt-get install安装软件时，下载的deb文件都会存放在/var/cache/apt/archives/下，为了今后重装或给别人用，特别是没有网络时，这些deb文件实际上是可以派上用途的，也就是可以用这些deb制作成本地源。这种方法还有一个应用场景：</p>
-<ol>
-<li>先在有网络的服务器上面进行apt-get install安装</li>
-<li>然后制作本地源</li>
-<li>将本地源拷贝到没有网络的服务器上，然后在那台机器上设定sourcelist指向这个本地源，此时在那台没有网络的服务器上也可以执行apt-get install安装了。</li>
-</ol>
-<p>下面给出可行且实用的部分本地源制作步骤：</p>
-<p>一、在自己的根目录下建立一个目录，用于放所有下载的软件包，目录名随自己喜欢,建议新手在自己的根目录下进行以下操作，以避免操作权限问题的困扰。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/ packs</span><br></pre></td></tr></table></figure>
-
-<p>拷贝过来发现在packs当中为文件都是root账户的，需要修改</p>
-<p>修改所有者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R enadmin.enadmin *</span><br></pre></td></tr></table></figure>
-
-<p> 修改权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod ug+rw,o+r *</span><br></pre></td></tr></table></figure>
-
-<p>二、复制文件到packs文件夹下，目录依各人情况变化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /var/cache/apt/archives/* ~/packs -r</span><br></pre></td></tr></table></figure>
-
-<p>三、建立Packages.gz包，里面记录了packs文件夹下面的软件包信息，包括依赖信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg-scanpackages packs /dev/null |gzip &gt; packs/Packages.gz -r</span><br></pre></td></tr></table></figure>
-
-<p> 完成此操作后，将packs文件夹复制到一个不常格式化的分区中，作为长久使用，比如我将它放在一个fat32的分区时面，路径是 /media/packs</p>
-<p>四、加本地源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<p>添加以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb file:///media/ packs/</span><br></pre></td></tr></table></figure>
-
-<p>注意packs后面有一个斜杠，前面还要有空格</p>
-<p>五、更新源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -403,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i>Linux</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i>hexo</a>
           
         </div>
       
@@ -412,17 +402,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="next" title="字符串匹配">
-                <i class="fa fa-chevron-left"></i> 字符串匹配
+              <a href="/2019/11/16/linux%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="linux安装包的区别">
+                <i class="fa fa-chevron-left"></i> linux安装包的区别
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/15/%E7%94%A8%E6%96%87%E5%AD%97%E6%9B%BF%E6%8D%A2%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5/" rel="prev" title="用文字替换网页链接">
-                用文字替换网页链接 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -577,7 +563,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#UBUNTU下安装程序的三种方法"><span class="nav-number">1.</span> <span class="nav-text">UBUNTU下安装程序的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-apt-get方法"><span class="nav-number">1.1.</span> <span class="nav-text">(1)apt-get方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-dpkg安装deb包"><span class="nav-number">1.2.</span> <span class="nav-text">(2)dpkg安装deb包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#make-install源代码安装"><span class="nav-number">1.3.</span> <span class="nav-text">make install源代码安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu制作本地源"><span class="nav-number">2.</span> <span class="nav-text">ubuntu制作本地源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">2.1.</span> <span class="nav-text">背景</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-复制配置文件"><span class="nav-number">1.</span> <span class="nav-text">1. 复制配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装Node-js"><span class="nav-number">2.</span> <span class="nav-text">2.安装Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">3.</span> <span class="nav-text">3.安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-新建文件夹，cd进入"><span class="nav-number">4.</span> <span class="nav-text">4.新建文件夹，cd进入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-将备份的文件覆盖到现在的文件夹"><span class="nav-number">5.</span> <span class="nav-text">5.将备份的文件覆盖到现在的文件夹</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最安全的hexo多台电脑同步博客解决方案–非新建分支"><span class="nav-number"></span> <span class="nav-text">最安全的hexo多台电脑同步博客解决方案–非新建分支</span></a></div>
             
           </div>
         </section>
