@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-17T06:57:54.878Z</updated>
+  <updated>2019-11-20T11:43:00.925Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vmare安装Mac虚拟机</title>
+    <link href="http://yoursite.com/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <id>http://yoursite.com/2019/11/20/vmare安装Mac虚拟机/</id>
+    <published>2019-11-20T10:51:42.000Z</published>
+    <updated>2019-11-20T11:43:00.925Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul><li><p>WIN10</p></li><li><h5 id="VMware-Workstation-Pro-14或者15"><a href="#VMware-Workstation-Pro-14或者15" class="headerlink" title="VMware Workstation Pro 14或者15"></a>VMware Workstation Pro 14或者15</h5></li></ul><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><h5 id="1-VMware-Workstation-Pro"><a href="#1-VMware-Workstation-Pro" class="headerlink" title="1.VMware Workstation Pro"></a>1.VMware Workstation Pro</h5><p>官网下载地址：<br><a href="http://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.0.0-10134415.exe" target="_blank" rel="noopener">http://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.0.0-10134415.exe</a><br>给几个序列号：<br>AC11H-4HZ05-08EDQ-APQGX-YCUC8<br>ZG780-8EZ9M-M89LY-M5PEG-W2AZ8<br>ZF3NU-D6XEJ-48E7Q-27YNC-PC8ED</p><h5 id="2-MacOS-Unlocker-for-VMware"><a href="#2-MacOS-Unlocker-for-VMware" class="headerlink" title="2.MacOS Unlocker for VMware"></a>2.MacOS Unlocker for VMware</h5><p>下载地址<br><a href="https://github.com/DrDonk/unlocker" target="_blank" rel="noopener">https://github.com/DrDonk/unlocker</a></p><p> <a href="https://github.com/paolo-projects/unlocker/releases" target="_blank" rel="noopener">https://github.com/paolo-projects/unlocker/releases</a> </p><p><a href="http://www.121down.com/soft/softview-43433.html" target="_blank" rel="noopener">http://www.121down.com/soft/softview-43433.html</a></p><p>应该有好用的吧！！！！</p><p>MAC OS 10.11<br>下面两个任选其一：<br><a href="http://pan.baidu.com/s/1jI78s4Y" target="_blank" rel="noopener">http://pan.baidu.com/s/1jI78s4Y</a> 密码：drbh<br><a href="https://pan.baidu.com/s/1ggZ7oFx" target="_blank" rel="noopener">https://pan.baidu.com/s/1ggZ7oFx</a> 密码: sxyj</p><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>在安装完成 VMware Workstation Pro 15 后，该软件有5个服务是自动启动的，只要你安装了，不管你有没有使用，他们都是工作的。要使用 MacOS Unlocker for VMware 对 VMware Workstation Pro 15 进行破解，就必须手动关闭这5个服务，软件无法对正在运行的文件修改。</p><h5 id="1-关闭VMware的5个自动启动服务"><a href="#1-关闭VMware的5个自动启动服务" class="headerlink" title="1.关闭VMware的5个自动启动服务"></a>1.关闭VMware的5个自动启动服务</h5><p>在计算机管理中找到服务</p><ol><li><p>双击，手动关闭这5个服务。</p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/1.png" alt="1"></p></li><li><p>运行MacOS Unlocker for VMware运行<br>MacOS Unlocker for VMware就是MAC 补丁。按照上面的网址下载解压后如下：</p></li></ol><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/2.png" alt="1"></p><p> 右键上图文件，以管理员身份运行之 </p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/3.png" alt="1"></p><p> 运行<strong>成功</strong>后，文件夹里文件发生了变化：多了backup和tools两个文件夹。效果如下： </p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/4.png" alt="1"></p><p> <strong>准备工作结束了。这个tools文件夹里有我们要的东西，下面用到时再说。</strong> </p><h3 id="MAC虚拟机设置"><a href="#MAC虚拟机设置" class="headerlink" title="MAC虚拟机设置"></a>MAC虚拟机设置</h3><p><strong>出现以下的图片说明你的Mac解锁才算成功了，否则继续换工具破解虚拟机的Mac选项</strong></p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/5.png" alt="1"></p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/6.png" alt="1"></p><p>以上就是安装过程中需要注意的地方，其他的下一步即可。</p><h3 id="启动MAC前准备工作"><a href="#启动MAC前准备工作" class="headerlink" title="启动MAC前准备工作"></a>启动MAC前准备工作</h3><p>虚拟机安装建立后，<strong>别着急启动</strong>，还要更改这个虚拟机的配置文件。找到上图中安装虚拟机的位置，找到以”.vmx”结尾的文件，打开进行编辑。</p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/7.png" alt="1"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在smc.present = &quot;TRUE&quot; 后面添加smc.version = &quot;0&quot;</span><br></pre></td></tr></table></figure><p> 结果如下 </p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/8.png" alt="1"></p><p> 保存退出。 </p><h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>启动客户机，进入 MAC 系统配置界面，常规下一步操作。直到出现<strong>没有足够的可用空间来进行安装</strong>。</p><p>解决坑点</p><h5 id="1-解决安装黑苹果出现“没有符合安装资格的软件包”"><a href="#1-解决安装黑苹果出现“没有符合安装资格的软件包”" class="headerlink" title="1.解决安装黑苹果出现“没有符合安装资格的软件包”"></a>1.解决安装黑苹果出现“没有符合安装资格的软件包”</h5><h5 id="重点：因为这是最后会出现的bug，提前解决防止重启死机。"><a href="#重点：因为这是最后会出现的bug，提前解决防止重启死机。" class="headerlink" title="重点：因为这是最后会出现的bug，提前解决防止重启死机。"></a>重点：因为这是最后会出现的bug，提前解决防止重启死机。</h5><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/9.jpg" alt="1"></p><p>而其他版本却为出现此问题。后来在论坛找到了解决方法，原来是时间问题。</p><p>可能你也会遇到：在重组Mac系统时，遇到“应用程序副本不能验证 它在下载过程中可能已遭破坏或篡改”，这个是因为主板时间不正确造成，可以通过终端修改时间解决。</p><p>解决方法:</p><p>打开实用工具——终端</p><p>如果你的Mac是联网状体，可以输入一下代码：</p><p>ntpdate time.apple.com</p><p>不过安装的时候一般是没法联网的</p><p>我们只能输入：date 070512052018.03 （这里设置一个2015年以后的时间，因为10.11发布时2015年）</p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/10.jpg" alt="1"></p><p>回车后，在终端——退出终端。</p><p>然后再进行安装就正常了。</p><h5 id="2-出现没有足够的可用空间来进行安装。"><a href="#2-出现没有足够的可用空间来进行安装。" class="headerlink" title="2.出现没有足够的可用空间来进行安装。"></a>2.出现<strong>没有足够的可用空间来进行安装</strong>。</h5><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/11.png" alt="1"></p><p> 点击屏幕上方的 “实用工具 -&gt; 磁盘工具”。选中 “ vmware workstation SATA hard drive media ”，点击 “抹掉”。</p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/13.png" alt="1"></p><p> 退出 “磁盘工具”，再次进行安装，此时选择出现的分区。 </p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/12.png" alt="1"></p><p> 后面都是常规化操作。 给个链接</p><p><a href="https://blog.csdn.net/weixin_43299649/article/details/82881567" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43299649/article/details/82881567</a></p><h2 id="安装VMware-Tool"><a href="#安装VMware-Tool" class="headerlink" title="安装VMware Tool"></a>安装VMware Tool</h2><p>安装完成后，鼠标和窗口大小都不舒服。这时候就要安装VMware Tool。还记得MacOS Unlocker for VMware 安装后出现的两个文件夹么，其中一个tools的文件夹中有我们要的工具。</p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/14.png" alt="1"></p><p> 加载VMware Tool </p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/15.png" alt="1"></p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/16.png" alt="1"></p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/17.png" alt="1"></p><p> 设置完成后，再次右键光盘图标，点击”连接”。 </p><p><img src="/2019/11/20/vmare%E5%AE%89%E8%A3%85Mac%E8%99%9A%E6%8B%9F%E6%9C%BA/18.png" alt="1"></p><h5 id="安装VMware-Tool，重启。"><a href="#安装VMware-Tool，重启。" class="headerlink" title="安装VMware Tool，重启。"></a>安装VMware Tool，重启。</h5><p>如果VMware的服务还没有开启，这时候可以将VMware的5个服务手动启动了，怎么关闭的就怎么开启。 </p><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul><li>安装顺序很重要；</li><li>所有安装路径建议纯英文；</li><li>安装成功后第一时间快照一下，养成良好习惯；</li></ul><h4 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h4><p><a href="https://blog.csdn.net/zyzmzm_/article/details/82562136" target="_blank" rel="noopener">https://blog.csdn.net/zyzmzm_/article/details/82562136</a></p><p><a href="https://blog.csdn.net/longji/article/details/83280940" target="_blank" rel="noopener">https://blog.csdn.net/longji/article/details/83280940</a></p><p><a href="https://blog.csdn.net/bigbear00007/article/details/89740165" target="_blank" rel="noopener">https://blog.csdn.net/bigbear00007/article/details/89740165</a></p><p><a href="https://blog.csdn.net/weixin_43299649/article/details/82881567" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43299649/article/details/82881567</a></p><p>多多百度，有耐心一定会成功！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;安装环境&quot;&gt;&lt;a href=&quot;#安装环境&quot; class=&quot;headerlink&quot; title=&quot;安装环境&quot;&gt;&lt;/a&gt;安装环境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;WIN10&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h5 id=&quot;VMware-Workstation-Pro-14
+      
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="Mac" scheme="http://yoursite.com/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode-163周赛题解</title>
@@ -358,21 +387,6 @@
     <id>http://yoursite.com/2019/11/12/动态规划DP/</id>
     <published>2019-11-12T05:54:09.000Z</published>
     <updated>2019-11-12T05:54:09.877Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>二分搜索，哈希</title>
-    <link href="http://yoursite.com/2019/11/12/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%93%88%E5%B8%8C/"/>
-    <id>http://yoursite.com/2019/11/12/二分搜索，哈希/</id>
-    <published>2019-11-12T05:53:25.000Z</published>
-    <updated>2019-11-12T05:53:25.636Z</updated>
     
     <summary type="html">
     
