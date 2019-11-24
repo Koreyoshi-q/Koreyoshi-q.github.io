@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-24T10:54:02.814Z</updated>
+  <updated>2019-11-24T11:03:39.102Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bug</title>
+    <link href="http://yoursite.com/2019/11/24/bug/"/>
+    <id>http://yoursite.com/2019/11/24/bug/</id>
+    <published>2019-11-24T11:03:04.000Z</published>
+    <updated>2019-11-24T11:03:39.102Z</updated>
+    
+    <content type="html"><![CDATA[<p>不是bug吧！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;不是bug吧！&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Leetcode第164场周赛题解</title>
@@ -394,21 +417,6 @@
     <id>http://yoursite.com/2019/11/12/DFS-BFS/</id>
     <published>2019-11-12T05:57:00.000Z</published>
     <updated>2019-11-12T05:57:00.527Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>图</title>
-    <link href="http://yoursite.com/2019/11/12/%E5%9B%BE/"/>
-    <id>http://yoursite.com/2019/11/12/图/</id>
-    <published>2019-11-12T05:56:29.000Z</published>
-    <updated>2019-11-12T05:56:29.032Z</updated>
     
     <summary type="html">
     
