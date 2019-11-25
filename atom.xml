@@ -284,13 +284,23 @@
     <link href="http://yoursite.com/2019/11/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/"/>
     <id>http://yoursite.com/2019/11/12/字符串匹配/</id>
     <published>2019-11-12T06:01:58.000Z</published>
-    <updated>2019-11-12T06:01:58.058Z</updated>
+    <updated>2019-11-25T12:53:38.862Z</updated>
+    
+    <content type="html"><![CDATA[<p>字符串匹配</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;字符串匹配&lt;/p&gt;
+
+      
     
     </summary>
     
     
+    
+      <category term="acm" scheme="http://yoursite.com/tags/acm/"/>
     
   </entry>
   
