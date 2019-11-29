@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-25T12:36:38.793Z</updated>
+  <updated>2019-11-29T07:42:56.301Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,28 +17,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>thank you</title>
+    <title>hexo+next博客-&gt;github+coding=疯狂踩坑</title>
     <link href="http://yoursite.com/2019/11/25/thank-you/"/>
     <id>http://yoursite.com/2019/11/25/thank-you/</id>
     <published>2019-11-25T11:42:16.000Z</published>
-    <updated>2019-11-25T12:36:38.793Z</updated>
+    <updated>2019-11-29T07:42:56.301Z</updated>
     
-    <content type="html"><![CDATA[<p>感谢腾讯爸爸，我的coding回来吧！！！！！！！！！！！</p><p>啊啊啊啊啊啊啊啊啊啊啊啊啊</p><h1 id="1-每次部署到coding必须重新关闭Pages服务，再打开就上传了"><a href="#1-每次部署到coding必须重新关闭Pages服务，再打开就上传了" class="headerlink" title="1.每次部署到coding必须重新关闭Pages服务，再打开就上传了"></a>1.每次部署到coding必须重新关闭Pages服务，再打开就上传了</h1><h1 id="2-我的hexo主题next的换页符号是乱码必须找到文件改成”-lt-”-“-gt-”文件名pagination-swag"><a href="#2-我的hexo主题next的换页符号是乱码必须找到文件改成”-lt-”-“-gt-”文件名pagination-swag" class="headerlink" title="2.我的hexo主题next的换页符号是乱码必须找到文件改成”&lt;”   “&gt;”文件名pagination.swag"></a>2.我的hexo主题next的换页符号是乱码必须找到文件改成”&lt;”   “&gt;”文件名pagination.swag</h1><h1 id="3-我的博客主题不适配，首页和分类404，又换了个版本的next"><a href="#3-我的博客主题不适配，首页和分类404，又换了个版本的next" class="headerlink" title="3.我的博客主题不适配，首页和分类404，又换了个版本的next"></a>3.我的博客主题不适配，首页和分类404，又换了个版本的next</h1><h1 id="我太难了！！！！！！！！！！！！！！！！！！！！"><a href="#我太难了！！！！！！！！！！！！！！！！！！！！" class="headerlink" title="我太难了！！！！！！！！！！！！！！！！！！！！"></a>我太难了！！！！！！！！！！！！！！！！！！！！</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="hexo-next博客-gt-github-coding-疯狂踩坑"><a href="#hexo-next博客-gt-github-coding-疯狂踩坑" class="headerlink" title="hexo+next博客-&gt;github+coding=疯狂踩坑"></a>hexo+next博客-&gt;github+coding=疯狂踩坑</h1><h1 id="我太难了！！"><a href="#我太难了！！" class="headerlink" title="我太难了！！!"></a>我太难了！！!</h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;感谢腾讯爸爸，我的coding回来吧！！！！！！！！！！！&lt;/p&gt;
-&lt;p&gt;啊啊啊啊啊啊啊啊啊啊啊啊啊&lt;/p&gt;
-&lt;h1 id=&quot;1-每次部署到coding必须重新关闭Pages服务，再打开就上传了&quot;&gt;&lt;a href=&quot;#1-每次部署到coding必须重新关闭Pages服务，再
+        &lt;h1 id=&quot;hexo-next博客-gt-github-coding-疯狂踩坑&quot;&gt;&lt;a href=&quot;#hexo-next博客-gt-github-coding-疯狂踩坑&quot; class=&quot;headerlink&quot; title=&quot;hexo+next博客-&amp;gt;github+cod
       
     
     </summary>
     
     
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
     
-      <category term="coding" scheme="http://yoursite.com/tags/coding/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
