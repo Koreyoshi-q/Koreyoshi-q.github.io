@@ -1,0 +1,684 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="爬虫," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="52hertz" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一．程序说明本文主要通过成都双流机场数据，建立了不确定性多阶段决策模型和拥堵型，验证了客流符合泊松分布，运用排队论理论设计了机场乘车改进。最后建立拥堵模型和定义乘车效率，然后在相同的时间段，以乘客的累计等待时间来判断是否为拥堵。 1. 泊松过程和排队论结合分析旅客累计等待时间的理论依据 排队系统由输入过程与到达规则、排队规则、服务机构的结构、服务时间与服务规划组成。   一般还假设到达间隔时间序列">
+<meta name="keywords" content="爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机场拥堵模型分析">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;18&#x2F;%E6%9C%BA%E5%9C%BA%E6%8B%A5%E5%A0%B5%E6%A8%A1%E5%9E%8B%E5%88%86%E6%9E%90&#x2F;index.html">
+<meta property="og:site_name" content="52hertz">
+<meta property="og:description" content="一．程序说明本文主要通过成都双流机场数据，建立了不确定性多阶段决策模型和拥堵型，验证了客流符合泊松分布，运用排队论理论设计了机场乘车改进。最后建立拥堵模型和定义乘车效率，然后在相同的时间段，以乘客的累计等待时间来判断是否为拥堵。 1. 泊松过程和排队论结合分析旅客累计等待时间的理论依据 排队系统由输入过程与到达规则、排队规则、服务机构的结构、服务时间与服务规划组成。   一般还假设到达间隔时间序列">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-18T07:49:46.173Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 机场拥堵模型分析 | 52hertz </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+<a href="https://github.com/Koreyoshi-q" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">52hertz</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机场拥堵模型分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-12-18T15:17:02+08:00" content="2019-12-18">
+              2019-12-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一．程序说明"><a href="#一．程序说明" class="headerlink" title="一．程序说明"></a><strong>一．程序说明</strong></h4><p>本文主要通过成都双流机场数据，建立了不确定性多阶段决策模型和拥堵型，验证了客流符合泊松分布，运用排队论理论设计了机场乘车改进。最后建立拥堵模型和定义乘车效率，然后在相同的时间段，以乘客的累计等待时间来判断是否为拥堵。</p>
+<p><strong>1.</strong> <strong>泊松过程和排队论结合分析旅客累计等待时间的理论依据</strong></p>
+<p>排队系统由输入过程与到达规则、排队规则、服务机构的结构、服务时间与服务规划组成。<br>   一般还假设到达间隔时间序列与服务时间均为独立同分布随机变量序列，且这两个序列也相互独立。<br>   评价一个排队系统的好坏要以顾客与服务机构两方面的利益为标准。就顾客来说总希望等待时间或逗留时间越短越好，从而希望服务台个数尽可能多些但是，就服务机构来说，增加服务台数，就意味着增加投资，增加多了会造成浪费，增加少了要引起顾客的抱怨甚至失去顾客，增加多少比较好呢？顾客与服务机构为了照顾自己的利益对排队系统中的3个指标：队长、等待时间、服务台的忙期（简称忙期）都很关心。因此这3个指标也就成了排队论的主要研究内容。</p>
+<h5 id="2-．泊松分布模型"><a href="#2-．泊松分布模型" class="headerlink" title="2**．泊松分布模型**"></a><strong>2**</strong>．泊松分布模型**</h5><p>更一般地来说，一个泊松过程是在每个有界的时间区间或在某个空间（例如：一个欧几里得平面或三维的欧几里得空间）中的每一个有界的区域，赋予一个随机的事件数，使得在一个时间区间或空间区域内的事件数，和另一个互斥（不重叠）的时间区间或空间区域内的事件数，这两个随机变数是独立的。在每一个时间区间或空间区域内的事件数是一个随机变数，遵循泊松分布。（技术上而言，更精确地来说，每一个具有有限测度的集合，都被赋予一个泊松分布的随机变数。）</p>
+<p>在不相重叠的时间区间内乘客的到达数是相互独立的 对充分小的，在吋间区间内有每一个乘客到达的概率与无关。 对充分小的，在时间区间内有两个或者两个以上乘客到达的概率极小，满足泊松过程的要求。</p>
+<h5 id="3-排队论"><a href="#3-排队论" class="headerlink" title="3.**排队论**"></a><strong>3.**</strong>排队论**</h5><p>排队论(Queuing Theory) ，是研究系统随机聚散现象和随机服务系统工作过程的数学理论和方法，又称随机服务系统理论，为运筹学的一个分支。</p>
+<p>日常生活中存在大量有形和无形的排队或拥挤现象，如旅客购票排队，市内电话占线等现象。排队论的基本思想是1909年丹麦数学家、科学家，工程师A.K.埃尔朗在解决自动电话设计问题时开始形成的，当时称为话务理论。他在热力学统计平衡理论的启发下，成功地建立了电话统计平衡模型，并由此得到一组递推状态方程，从而导出著名的埃尔朗电话损失率公式。</p>
+<p>排队论(queuing theory), 或称随机服务系统理论， 是通过对服务对象到来及服务时间的统计研究，得出这些数量指标（等待时间、排队长度、忙期长短等）的统计规律，然后根据这些规律来改进服务系统的结构或重新组织被服务对象，使得服务系统既能满足服务对象的需要，又能使机构的费用最经济或某些指标最优。它是数学运筹学的分支学科，也是研究服务系统中排队现象随机规律的学科。广泛应用于计算机网络, 生产, 运输, 库存等各项资源共享的随机服务系统。 排队论研究的内容有3个方面：统计推断，根据资料建立模型；系统的性态，即和排队有关的数量指标的概率规律性；系统的优化问题。其目的是正确设计和有效运行各个服务系统，使之发挥最佳效益。</p>
+<h5 id="4-排队模型的表示"><a href="#4-排队模型的表示" class="headerlink" title="4.**排队模型的表示**"></a><strong>4.**</strong>排队模型的表示**</h5><p> (1)、X/Y/Z/A/B/C<br> X—顾客相继到达的间隔时间的分布；<br> Y—服务时间的分布；<br> M—负指数分布、D—确定型、Ek —k阶爱尔兰分布；<br> Z—服务台个数；<br> A—系统容量限制（默认为∞）；<br> B—顾客源数目（默认为∞）；<br> C—服务规则 （默认为先到先服务FCFS)。<br> (2）、排队系统的衡量指标<br> 服务队长Ls—服务中的顾客数；<br> 排队长Lq—队列中的顾客数；<br> 总队长L=Ls+Lq 系统中的顾客总数；<br> 逗留时间Ws—顾客在服务中的等待时间；<br> 等待时间Wq—顾客在队列中的等待时间；<br> 总时间W=Ws+Wq 顾客在系统中的总停留时间；<br> 忙期—服务机构两次空闲的时间间隔；<br> 服务强度ρ；<br> 稳态—系统运行充分长时间后，初始状态的影响基本消失，系统状态不再随时间变化。<br> (3)、到达间隔时间与服务时间的分布<br> 泊松分布；<br> 负指数分布；<br> 爱尔兰分布；<br> 统计数据的分布判断。</p>
+<h5 id="5-优化改进思路"><a href="#5-优化改进思路" class="headerlink" title="5.**优化改进思路**"></a><strong>5.**</strong>优化改进思路**</h5><p>（1）加入更多的影响因素，以使得决策模型更加贴近实际。</p>
+<p>（2）泊松分布模型与排队论模型加入限制条件，使得减少其与实际产生的误差。</p>
+<p>（3）带入实际数据来队其进行验证，优化模型的算法，使其计算方便，并贴近实际情况 </p>
+<h4 id="二-运行界面展示"><a href="#二-运行界面展示" class="headerlink" title="二.**  运行界面展示"></a>二.**  <strong>运行界面展示</strong></h4><p>​                      <strong>自己去跑代码</strong></p>
+<h4 id="二-源程序代码"><a href="#二-源程序代码" class="headerlink" title="二. 源程序代码"></a><strong>二.</strong> <strong>源程序代码</strong></h4><ol>
+<li><h5 id="处理旅客信息"><a href="#处理旅客信息" class="headerlink" title="处理旅客信息"></a><strong>处理旅客信息</strong></h5></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data=pd.read_excel(<span class="string">'cd.xlsx'</span>)</span><br><span class="line">print(data)</span><br><span class="line">data=data.sort_values(by=<span class="string">'抵达时间'</span>,axis=<span class="number">0</span>,ascending=<span class="literal">True</span>)</span><br><span class="line">val=[[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">60</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">24</span>)]</span><br><span class="line">t=data.iloc[:,<span class="number">3</span>].values</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> t:</span><br><span class="line">    a,b=i.split(<span class="string">':'</span>)</span><br><span class="line">    b=int(b)</span><br><span class="line">    a=int(a)</span><br><span class="line">    na=copy.deepcopy(a)</span><br><span class="line">    nb=copy.deepcopy(b)</span><br><span class="line">    m = <span class="number">20</span></span><br><span class="line">    s = np.random.exponential(<span class="number">1</span>/m, size=<span class="number">150</span>)</span><br><span class="line">    ss=<span class="number">0</span></span><br><span class="line">    count=<span class="number">0</span></span><br><span class="line">    print(s)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        ss=ss+i</span><br><span class="line">        count=count+<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> ss&gt;=<span class="number">1</span>:</span><br><span class="line">            ss=<span class="number">0</span></span><br><span class="line">            val[na][nb]+=int(count)</span><br><span class="line">            nb=nb+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nb//<span class="number">60</span>&gt;=<span class="number">1</span>:</span><br><span class="line">                nb=nb%<span class="number">60</span></span><br><span class="line">                na=na+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> na==<span class="number">24</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            count=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">60</span>):</span><br><span class="line">        val[i][j]=int(val[i][j]*<span class="number">0.46</span>)</span><br><span class="line">        print(val[i][j])</span><br><span class="line">v = []</span><br><span class="line">f = open(<span class="string">'C:\\people.txt'</span>,<span class="string">'w+'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>):</span><br><span class="line">    join = val[i]</span><br><span class="line">    v.append(join)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">60</span>):</span><br><span class="line">        strNum = str(join[j])</span><br><span class="line">        f.write(strNum)</span><br><span class="line">        <span class="keyword">if</span> j!=<span class="number">59</span>:</span><br><span class="line">            f.write(<span class="string">' '</span>)</span><br><span class="line">    f.write(<span class="string">'\n'</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-计算旅客的累计等待时间"><a href="#2-计算旅客的累计等待时间" class="headerlink" title="2.计算旅客的累计等待时间**"></a>2.计算旅客的累计等待时间**</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> hour=<span class="number">24</span>,minute=<span class="number">60</span>;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="built_in">deque</span>&lt;P&gt; q,b;</span><br><span class="line"><span class="keyword">int</span> ans[hour][minute];</span><br><span class="line"><span class="keyword">int</span> power=<span class="number">15</span>,s;  <span class="comment">//运载能力</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    freopen(<span class="string">"C:\\people.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;hour;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;minute;j++)&#123;</span><br><span class="line">            ans[i][j]=<span class="number">0</span>;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">            <span class="keyword">if</span>(s) q.push_back(&#123;s,<span class="number">0</span>&#125;);</span><br><span class="line">            <span class="keyword">int</span> t=power;</span><br><span class="line">            <span class="keyword">while</span>(q.size()&amp;&amp;t)&#123;</span><br><span class="line">                P p=q.front();</span><br><span class="line">                q.pop_front();</span><br><span class="line">                <span class="keyword">int</span> x=p.first,y=p.second;</span><br><span class="line">                <span class="keyword">if</span>(t&lt;x)&#123;</span><br><span class="line">                    x-=t;</span><br><span class="line">                    q.push_front(&#123;x,y&#125;);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;t-=x;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(!b.empty())</span><br><span class="line">                b.pop_front();</span><br><span class="line">            <span class="keyword">int</span> f_sum=<span class="number">0</span>,s_sum=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">                P p=q.front();</span><br><span class="line">                p.second++;</span><br><span class="line">                f_sum+=p.first;</span><br><span class="line">                s_sum+=p.second;</span><br><span class="line">                b.push_back(p);</span><br><span class="line">                q.pop_front();</span><br><span class="line">            &#125;</span><br><span class="line">            ans[i][j]=s_sum;</span><br><span class="line">            <span class="keyword">while</span>(!b.empty()) q.push_back(b.front()),b.pop_front();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    freopen(<span class="string">"C:\\time.txt"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;hour;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;minute;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j) <span class="built_in">cout</span> &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-将结果汇智成统计图"><a href="#3-将结果汇智成统计图" class="headerlink" title="3.将结果汇智成统计图**"></a>3.将结果汇智成统计图**</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.style.use(&#123;<span class="string">'figure.figsize'</span>:(<span class="number">10</span>,<span class="number">5</span> )&#125;)</span><br><span class="line">f=open(<span class="string">'C:\\time.txt'</span>)</span><br><span class="line">l=[]</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">    line=line.strip(<span class="string">'\n'</span>).split(<span class="string">' '</span>)</span><br><span class="line">    a=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> line:</span><br><span class="line">        a.append(int(i))</span><br><span class="line">    l.append(a)</span><br><span class="line">index=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">60</span>):</span><br><span class="line">    index.append(i)</span><br><span class="line">val_h=l[<span class="number">11</span>]  <span class="comment">#修改想要输出的区间是哪一小时</span></span><br><span class="line">p=plt.bar(x=index,height=val_h,color=<span class="string">'blue'</span>)</span><br><span class="line">plt.savefig(<span class="string">'result.png'</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-爬取携程的航班信息"><a href="#4-爬取携程的航班信息" class="headerlink" title="4.爬取携程的航班信息"></a>4.爬取携程的航班信息</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">table = []</span><br><span class="line"></span><br><span class="line">city = &#123;<span class="string">'阿尔山'</span>: <span class="string">'YIE'</span>, <span class="string">'阿克苏'</span>: <span class="string">'AKU'</span>, <span class="string">'阿拉善右旗'</span>: <span class="string">'RHT'</span>, <span class="string">'阿拉善左旗'</span>: <span class="string">'AXF'</span>, <span class="string">'阿勒泰'</span>: <span class="string">'AAT'</span>, <span class="string">'阿里'</span>: <span class="string">'NGQ'</span>, <span class="string">'澳门'</span>: <span class="string">'MFM'</span>,</span><br><span class="line">        <span class="string">'安庆'</span>: <span class="string">'AQG'</span>, <span class="string">'安顺'</span>: <span class="string">'AVA'</span>, <span class="string">'鞍山'</span>: <span class="string">'AOG'</span>, <span class="string">'巴彦淖尔'</span>: <span class="string">'RLK'</span>, <span class="string">'百色'</span>: <span class="string">'AEB'</span>, <span class="string">'包头'</span>: <span class="string">'BAV'</span>, <span class="string">'保山'</span>: <span class="string">'BSD'</span>, <span class="string">'北海'</span>: <span class="string">'BHY'</span>,</span><br><span class="line">        <span class="string">'北京'</span>: <span class="string">'BJS'</span>, <span class="string">'白城'</span>: <span class="string">'DBC'</span>, <span class="string">'白山'</span>: <span class="string">'NBS'</span>, <span class="string">'毕节'</span>: <span class="string">'BFJ'</span>, <span class="string">'博乐'</span>: <span class="string">'BPL'</span>, <span class="string">'重庆'</span>: <span class="string">'CKG'</span>, <span class="string">'昌都'</span>: <span class="string">'BPX'</span>, <span class="string">'常德'</span>: <span class="string">'CGD'</span>,</span><br><span class="line">        <span class="string">'常州'</span>: <span class="string">'CZX'</span>, <span class="string">'朝阳'</span>: <span class="string">'CHG'</span>, <span class="string">'成都'</span>: <span class="string">'CTU'</span>, <span class="string">'池州'</span>: <span class="string">'JUH'</span>, <span class="string">'赤峰'</span>: <span class="string">'CIF'</span>, <span class="string">'揭阳'</span>: <span class="string">'SWA'</span>, <span class="string">'长春'</span>: <span class="string">'CGQ'</span>, <span class="string">'长沙'</span>: <span class="string">'CSX'</span>,</span><br><span class="line">        <span class="string">'长治'</span>: <span class="string">'CIH'</span>, <span class="string">'承德'</span>: <span class="string">'CDE'</span>, <span class="string">'沧源'</span>: <span class="string">'CWJ'</span>, <span class="string">'达县'</span>: <span class="string">'DAX'</span>, <span class="string">'大理'</span>: <span class="string">'DLU'</span>, <span class="string">'大连'</span>: <span class="string">'DLC'</span>, <span class="string">'大庆'</span>: <span class="string">'DQA'</span>, <span class="string">'大同'</span>: <span class="string">'DAT'</span>,</span><br><span class="line">        <span class="string">'丹东'</span>: <span class="string">'DDG'</span>, <span class="string">'稻城'</span>: <span class="string">'DCY'</span>, <span class="string">'东营'</span>: <span class="string">'DOY'</span>, <span class="string">'敦煌'</span>: <span class="string">'DNH'</span>, <span class="string">'芒市'</span>: <span class="string">'LUM'</span>, <span class="string">'额济纳旗'</span>: <span class="string">'EJN'</span>, <span class="string">'鄂尔多斯'</span>: <span class="string">'DSN'</span>, <span class="string">'恩施'</span>: <span class="string">'ENH'</span>,</span><br><span class="line">        <span class="string">'二连浩特'</span>: <span class="string">'ERL'</span>, <span class="string">'佛山'</span>: <span class="string">'FUO'</span>, <span class="string">'福州'</span>: <span class="string">'FOC'</span>, <span class="string">'抚远'</span>: <span class="string">'FYJ'</span>, <span class="string">'阜阳'</span>: <span class="string">'FUG'</span>, <span class="string">'赣州'</span>: <span class="string">'KOW'</span>, <span class="string">'格尔木'</span>: <span class="string">'GOQ'</span>, <span class="string">'固原'</span>: <span class="string">'GYU'</span>,</span><br><span class="line">        <span class="string">'广元'</span>: <span class="string">'GYS'</span>, <span class="string">'广州'</span>: <span class="string">'CAN'</span>, <span class="string">'贵阳'</span>: <span class="string">'KWE'</span>, <span class="string">'桂林'</span>: <span class="string">'KWL'</span>, <span class="string">'哈尔滨'</span>: <span class="string">'HRB'</span>, <span class="string">'哈密'</span>: <span class="string">'HMI'</span>, <span class="string">'海口'</span>: <span class="string">'HAK'</span>, <span class="string">'海拉尔'</span>: <span class="string">'HLD'</span>,</span><br><span class="line">        <span class="string">'邯郸'</span>: <span class="string">'HDG'</span>, <span class="string">'汉中'</span>: <span class="string">'HZG'</span>, <span class="string">'杭州'</span>: <span class="string">'HGH'</span>, <span class="string">'合肥'</span>: <span class="string">'HFE'</span>, <span class="string">'和田'</span>: <span class="string">'HTN'</span>, <span class="string">'黑河'</span>: <span class="string">'HEK'</span>, <span class="string">'呼和浩特'</span>: <span class="string">'HET'</span>, <span class="string">'淮安'</span>: <span class="string">'HIA'</span>,</span><br><span class="line">        <span class="string">'怀化'</span>: <span class="string">'HJJ'</span>, <span class="string">'黄山'</span>: <span class="string">'TXN'</span>, <span class="string">'惠州'</span>: <span class="string">'HUZ'</span>, <span class="string">'鸡西'</span>: <span class="string">'JXA'</span>, <span class="string">'济南'</span>: <span class="string">'TNA'</span>, <span class="string">'济宁'</span>: <span class="string">'JNG'</span>, <span class="string">'加格达奇'</span>: <span class="string">'JGD'</span>, <span class="string">'佳木斯'</span>: <span class="string">'JMU'</span>,</span><br><span class="line">        <span class="string">'嘉峪关'</span>: <span class="string">'JGN'</span>, <span class="string">'金昌'</span>: <span class="string">'JIC'</span>, <span class="string">'金门'</span>: <span class="string">'KNH'</span>, <span class="string">'锦州'</span>: <span class="string">'JNZ'</span>, <span class="string">'嘉义'</span>: <span class="string">'CYI'</span>, <span class="string">'西双版纳'</span>: <span class="string">'JHG'</span>, <span class="string">'建三江'</span>: <span class="string">'JSJ'</span>, <span class="string">'晋江'</span>: <span class="string">'JJN'</span>,</span><br><span class="line">        <span class="string">'井冈山'</span>: <span class="string">'JGS'</span>, <span class="string">'景德镇'</span>: <span class="string">'JDZ'</span>, <span class="string">'九江'</span>: <span class="string">'JIU'</span>, <span class="string">'九寨沟'</span>: <span class="string">'JZH'</span>, <span class="string">'喀什'</span>: <span class="string">'KHG'</span>, <span class="string">'凯里'</span>: <span class="string">'KJH'</span>, <span class="string">'康定'</span>: <span class="string">'KGT'</span>, <span class="string">'克拉玛依'</span>: <span class="string">'KRY'</span>,</span><br><span class="line">        <span class="string">'库车'</span>: <span class="string">'KCA'</span>, <span class="string">'库尔勒'</span>: <span class="string">'KRL'</span>, <span class="string">'昆明'</span>: <span class="string">'KMG'</span>, <span class="string">'拉萨'</span>: <span class="string">'LXA'</span>, <span class="string">'兰州'</span>: <span class="string">'LHW'</span>, <span class="string">'黎平'</span>: <span class="string">'HZH'</span>, <span class="string">'丽江'</span>: <span class="string">'LJG'</span>, <span class="string">'荔波'</span>: <span class="string">'LLB'</span>,</span><br><span class="line">        <span class="string">'连云港'</span>: <span class="string">'LYG'</span>, <span class="string">'六盘水'</span>: <span class="string">'LPF'</span>, <span class="string">'临汾'</span>: <span class="string">'LFQ'</span>, <span class="string">'林芝'</span>: <span class="string">'LZY'</span>, <span class="string">'临沧'</span>: <span class="string">'LNJ'</span>, <span class="string">'临沂'</span>: <span class="string">'LYI'</span>, <span class="string">'柳州'</span>: <span class="string">'LZH'</span>, <span class="string">'泸州'</span>: <span class="string">'LZO'</span>,</span><br><span class="line">        <span class="string">'洛阳'</span>: <span class="string">'LYA'</span>, <span class="string">'吕梁'</span>: <span class="string">'LLV'</span>, <span class="string">'澜沧'</span>: <span class="string">'JMJ'</span>, <span class="string">'龙岩'</span>: <span class="string">'LCX'</span>, <span class="string">'满洲里'</span>: <span class="string">'NZH'</span>, <span class="string">'梅州'</span>: <span class="string">'MXZ'</span>, <span class="string">'绵阳'</span>: <span class="string">'MIG'</span>, <span class="string">'漠河'</span>: <span class="string">'OHE'</span>,</span><br><span class="line">        <span class="string">'牡丹江'</span>: <span class="string">'MDG'</span>, <span class="string">'马祖'</span>: <span class="string">'MFK'</span>, <span class="string">'南昌'</span>: <span class="string">'KHN'</span>, <span class="string">'南充'</span>: <span class="string">'NAO'</span>, <span class="string">'南京'</span>: <span class="string">'NKG'</span>, <span class="string">'南宁'</span>: <span class="string">'NNG'</span>, <span class="string">'南通'</span>: <span class="string">'NTG'</span>, <span class="string">'南阳'</span>: <span class="string">'NNY'</span>,</span><br><span class="line">        <span class="string">'宁波'</span>: <span class="string">'NGB'</span>, <span class="string">'宁蒗'</span>: <span class="string">'NLH'</span>, <span class="string">'攀枝花'</span>: <span class="string">'PZI'</span>, <span class="string">'普洱'</span>: <span class="string">'SYM'</span>, <span class="string">'齐齐哈尔'</span>: <span class="string">'NDG'</span>, <span class="string">'黔江'</span>: <span class="string">'JIQ'</span>, <span class="string">'且末'</span>: <span class="string">'IQM'</span>, <span class="string">'秦皇岛'</span>: <span class="string">'BPE'</span>,</span><br><span class="line">        <span class="string">'青岛'</span>: <span class="string">'TAO'</span>, <span class="string">'庆阳'</span>: <span class="string">'IQN'</span>, <span class="string">'衢州'</span>: <span class="string">'JUZ'</span>, <span class="string">'日喀则'</span>: <span class="string">'RKZ'</span>, <span class="string">'日照'</span>: <span class="string">'RIZ'</span>, <span class="string">'三亚'</span>: <span class="string">'SYX'</span>, <span class="string">'厦门'</span>: <span class="string">'XMN'</span>, <span class="string">'上海'</span>: <span class="string">'SHA'</span>,</span><br><span class="line">        <span class="string">'深圳'</span>: <span class="string">'SZX'</span>, <span class="string">'神农架'</span>: <span class="string">'HPG'</span>, <span class="string">'沈阳'</span>: <span class="string">'SHE'</span>, <span class="string">'石家庄'</span>: <span class="string">'SJW'</span>, <span class="string">'塔城'</span>: <span class="string">'TCG'</span>, <span class="string">'台州'</span>: <span class="string">'HYN'</span>, <span class="string">'太原'</span>: <span class="string">'TYN'</span>, <span class="string">'扬州'</span>: <span class="string">'YTY'</span>,</span><br><span class="line">        <span class="string">'唐山'</span>: <span class="string">'TVS'</span>, <span class="string">'腾冲'</span>: <span class="string">'TCZ'</span>, <span class="string">'天津'</span>: <span class="string">'TSN'</span>, <span class="string">'天水'</span>: <span class="string">'THQ'</span>, <span class="string">'通辽'</span>: <span class="string">'TGO'</span>, <span class="string">'铜仁'</span>: <span class="string">'TEN'</span>, <span class="string">'吐鲁番'</span>: <span class="string">'TLQ'</span>, <span class="string">'万州'</span>: <span class="string">'WXN'</span>,</span><br><span class="line">        <span class="string">'威海'</span>: <span class="string">'WEH'</span>, <span class="string">'潍坊'</span>: <span class="string">'WEF'</span>, <span class="string">'温州'</span>: <span class="string">'WNZ'</span>, <span class="string">'文山'</span>: <span class="string">'WNH'</span>, <span class="string">'乌海'</span>: <span class="string">'WUA'</span>, <span class="string">'乌兰浩特'</span>: <span class="string">'HLH'</span>, <span class="string">'乌鲁木齐'</span>: <span class="string">'URC'</span>, <span class="string">'无锡'</span>: <span class="string">'WUX'</span>,</span><br><span class="line">        <span class="string">'梧州'</span>: <span class="string">'WUZ'</span>, <span class="string">'武汉'</span>: <span class="string">'WUH'</span>, <span class="string">'武夷山'</span>: <span class="string">'WUS'</span>, <span class="string">'西安'</span>: <span class="string">'SIA'</span>, <span class="string">'西昌'</span>: <span class="string">'XIC'</span>, <span class="string">'西宁'</span>: <span class="string">'XNN'</span>, <span class="string">'锡林浩特'</span>: <span class="string">'XIL'</span>,</span><br><span class="line">        <span class="string">'香格里拉(迪庆)'</span>: <span class="string">'DIG'</span>,</span><br><span class="line">        <span class="string">'襄阳'</span>: <span class="string">'XFN'</span>, <span class="string">'兴义'</span>: <span class="string">'ACX'</span>, <span class="string">'徐州'</span>: <span class="string">'XUZ'</span>, <span class="string">'香港'</span>: <span class="string">'HKG'</span>, <span class="string">'烟台'</span>: <span class="string">'YNT'</span>, <span class="string">'延安'</span>: <span class="string">'ENY'</span>, <span class="string">'延吉'</span>: <span class="string">'YNJ'</span>, <span class="string">'盐城'</span>: <span class="string">'YNZ'</span>,</span><br><span class="line">        <span class="string">'伊春'</span>: <span class="string">'LDS'</span>,</span><br><span class="line">        <span class="string">'伊宁'</span>: <span class="string">'YIN'</span>, <span class="string">'宜宾'</span>: <span class="string">'YBP'</span>, <span class="string">'宜昌'</span>: <span class="string">'YIH'</span>, <span class="string">'宜春'</span>: <span class="string">'YIC'</span>, <span class="string">'义乌'</span>: <span class="string">'YIW'</span>, <span class="string">'银川'</span>: <span class="string">'INC'</span>, <span class="string">'永州'</span>: <span class="string">'LLF'</span>, <span class="string">'榆林'</span>: <span class="string">'UYN'</span>,</span><br><span class="line">        <span class="string">'玉树'</span>: <span class="string">'YUS'</span>,</span><br><span class="line">        <span class="string">'运城'</span>: <span class="string">'YCU'</span>, <span class="string">'湛江'</span>: <span class="string">'ZHA'</span>, <span class="string">'张家界'</span>: <span class="string">'DYG'</span>, <span class="string">'张家口'</span>: <span class="string">'ZQZ'</span>, <span class="string">'张掖'</span>: <span class="string">'YZY'</span>, <span class="string">'昭通'</span>: <span class="string">'ZAT'</span>, <span class="string">'郑州'</span>: <span class="string">'CGO'</span>, <span class="string">'中卫'</span>: <span class="string">'ZHY'</span>,</span><br><span class="line">        <span class="string">'舟山'</span>: <span class="string">'HSN'</span>,</span><br><span class="line">        <span class="string">'珠海'</span>: <span class="string">'ZUH'</span>, <span class="string">'遵义(茅台)'</span>: <span class="string">'WMT'</span>, <span class="string">'遵义(新舟)'</span>: <span class="string">'ZYI'</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">flight</span><span class="params">(dcity, acity, date)</span>:</span></span><br><span class="line">    date = date[<span class="number">0</span>:<span class="number">4</span>] + <span class="string">'-'</span> + date[<span class="number">4</span>:<span class="number">6</span>] + <span class="string">'-'</span> + date[<span class="number">6</span>:<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla / 5.0(WindowsNT10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 78.0.3904.70Safari / 537.36"</span>,</span><br><span class="line">        <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,  <span class="comment"># 声明文本类型为 json 格式,</span></span><br><span class="line">        <span class="string">'Cookie'</span>: <span class="string">'__DAYU_PP=fbffA7JMjfFQYEJvq3yV285fa84ef3bb; _abtest_userid=14f10ca5-5fe5-4b90-8994-a9a2a8289725; _ga=GA1.2.1823657567.1547218198; _RSG=jB4_phNRhw9fNvhoLy8_29; _RDG=28f1ebd8af073928c800c3c3726b485bce; _RGUID=9eab6d7a-f3fc-42ed-90bf-23c572af95e9; _geoinfo=CN%26%e6%b7%b1%e5%9c%b3; _bfa=1.1547218195619.296wjo.1.1547625090247.1554179025352.5.60; _bfs=1.1; Hm_lvt_cdce8cda34e84469b1c8015204129522=1554179026; Hm_lpvt_cdce8cda34e84469b1c8015204129522=1554179026; gad_city=31f35a60e938dff697ddea628b5bea7c; _RF1=14.153.237.134; Session=SmartLinkCode=U155952&amp;SmartLinkKeyWord=&amp;SmartLinkQuary=&amp;SmartLinkHost=&amp;SmartLinkLanguage=zh; _gid=GA1.2.1875696831.1554179028; _gat=1; Mkt_UnionRecord=%5B%7B%22aid%22%3A%224897%22%2C%22timestamp%22%3A1554179028552%7D%5D; _jzqco=%7C%7C%7C%7C1547625095764%7C1.1997966906.1547218199380.1547636825575.1554179028593.1547636825575.1554179028593.0.0.0.59.59; __zpspc=9.5.1554179028.1554179028.1%232%7Csp0.baidu.com%7C%7C%7C%25E6%2590%25BA%25E7%25A8%258B%7C%23; MKT_Pagesource=PC; Union=OUID=index&amp;AllianceID=4897&amp;SID=155952&amp;SourceID=&amp;Expires=1554783828996; MKT_OrderClick=ASID=4897155952&amp;CT=1554179029004&amp;CURL=https%3A%2F%2Fwww.ctrip.com%2F%3Fsid%3D155952%26allianceid%3D4897%26ouid%3Dindex&amp;VAL=&#123;"pc_vid":"1547218195619.296wjo"&#125;; _bfi=p1%3D100101991%26p2%3D100101991%26v1%3D60%26v2%3D59'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    url = <span class="string">'https://flights.ctrip.com/itinerary/api/12808/products'</span></span><br><span class="line">    request_payload = &#123;<span class="string">"flightWay"</span>: <span class="string">"Oneway"</span>,</span><br><span class="line">                       <span class="string">"army"</span>: <span class="string">"false"</span>,</span><br><span class="line">                       <span class="string">"classType"</span>: <span class="string">"ALL"</span>,</span><br><span class="line">                       <span class="string">"hasChild"</span>: <span class="string">'false'</span>,</span><br><span class="line">                       <span class="string">"hasBaby"</span>: <span class="string">'false'</span>,</span><br><span class="line">                       <span class="string">"searchIndex"</span>: <span class="number">1</span>,</span><br><span class="line">                       <span class="string">"portingToken"</span>: <span class="string">"3fec6a5a249a44faba1f245e61e2af88"</span>,</span><br><span class="line">                       <span class="string">"airportParams"</span>: [</span><br><span class="line">                           &#123;<span class="string">"dcity"</span>: city.get(dcity), <span class="string">"acity"</span>: city.get(acity), <span class="string">"dcityname"</span>: dcity, <span class="string">"acityname"</span>: acity,</span><br><span class="line">                            <span class="string">"date"</span>: date&#125;]&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这里传进去的参数必须为 json 格式</span></span><br><span class="line">    response = requests.post(url, data=json.dumps(request_payload), headers=headers).text</span><br><span class="line">    routeList = json.loads(response)[<span class="string">"data"</span>].get(<span class="string">'routeList'</span>)</span><br><span class="line">    <span class="comment"># print("123",routeList)</span></span><br><span class="line">    <span class="keyword">for</span> route <span class="keyword">in</span> routeList:</span><br><span class="line">        <span class="keyword">if</span> len(route.get(<span class="string">'legs'</span>)) == <span class="number">1</span>:</span><br><span class="line">            info = []</span><br><span class="line">            legs = route.get(<span class="string">'legs'</span>)[<span class="number">0</span>]</span><br><span class="line">            flight = legs.get(<span class="string">'flight'</span>)</span><br><span class="line">            info.append(flight.get(<span class="string">'airlineName'</span>))</span><br><span class="line">            info.append(flight.get(<span class="string">'flightNumber'</span>))</span><br><span class="line">            info.append(flight.get(<span class="string">'departureDate'</span>)[<span class="number">-8</span>:<span class="number">-3</span>])</span><br><span class="line">            info.append(flight.get(<span class="string">'arrivalDate'</span>)[<span class="number">-8</span>:<span class="number">-3</span>])</span><br><span class="line">            info.append(flight.get(<span class="string">'punctualityRate'</span>))</span><br><span class="line">            info.append(legs.get(<span class="string">'characteristic'</span>).get(<span class="string">'lowestPrice'</span>))</span><br><span class="line">            print(info)</span><br><span class="line">            table.append(info)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    dcity = <span class="string">'北京'</span></span><br><span class="line">    acity = <span class="string">'成都'</span></span><br><span class="line">    date = <span class="string">'20190916'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> city.keys():</span><br><span class="line">        print(i)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> i != acity:</span><br><span class="line">                flight(i, acity, date)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    <span class="comment">#xiecheng('北京','成都','20190916')</span></span><br><span class="line">    df = pd.DataFrame(table)</span><br><span class="line">    df.to_excel(<span class="string">'C:\\cd.xlsx'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="fa fa-tag"></i>爬虫</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/15/Leetcode%E7%AC%AC167%E5%9C%BA%E5%91%A8%E8%B5%9B%E9%A2%98%E8%A7%A3/" rel="next" title="Leetcode第167场周赛题解">
+                <i class="fa fa-chevron-left"></i> Leetcode第167场周赛题解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="52hertz" />
+          <p class="site-author-name" itemprop="name">52hertz</p>
+          <p class="site-description motion-element" itemprop="description">Koreyoshi</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Koreyoshi-q" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/cqgfq_000" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://crazyeric.top" title="李汉奇" target="_blank">李汉奇</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一．程序说明"><span class="nav-number">1.</span> <span class="nav-text">一．程序说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-．泊松分布模型"><span class="nav-number">1.1.</span> <span class="nav-text">2**．泊松分布模型**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-排队论"><span class="nav-number">1.2.</span> <span class="nav-text">3.**排队论**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-排队模型的表示"><span class="nav-number">1.3.</span> <span class="nav-text">4.**排队模型的表示**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-优化改进思路"><span class="nav-number">1.4.</span> <span class="nav-text">5.**优化改进思路**</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-运行界面展示"><span class="nav-number">2.</span> <span class="nav-text">二.**  运行界面展示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-源程序代码"><span class="nav-number">3.</span> <span class="nav-text">二. 源程序代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#处理旅客信息"><span class="nav-number">3.1.</span> <span class="nav-text">处理旅客信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-计算旅客的累计等待时间"><span class="nav-number">3.2.</span> <span class="nav-text">2.计算旅客的累计等待时间**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-将结果汇智成统计图"><span class="nav-number">3.3.</span> <span class="nav-text">3.将结果汇智成统计图**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-爬取携程的航班信息"><span class="nav-number">3.4.</span> <span class="nav-text">4.爬取携程的航班信息</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">52hertz</span>
+</div>
+
+
+
+<div class="theme-info">
+  
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 加载爱心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
